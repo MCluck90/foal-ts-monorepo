@@ -1,7 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-cd client
-yarn test:all
-cd ../server
-yarn test:all
+npx prepush-if-changed

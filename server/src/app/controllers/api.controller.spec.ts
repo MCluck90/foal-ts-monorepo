@@ -11,7 +11,7 @@ import {
 } from '@foal/core'
 
 // App
-import { ApiController } from './api.controller'
+import { ApiController } from '~/app/controllers/api.controller'
 
 describe('ApiController', () => {
   describe('has a "index" method that', () => {

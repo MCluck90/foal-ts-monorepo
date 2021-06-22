@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useEffect, useState } from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('')
   useEffect(() => {
     async function run() {
-      const response = await fetch("/api");
-      const result = await response.text();
-      setText(result);
+      if (text) {
+        return
+      }
+
+      const response = await fetch('/api')
+      const result = await response.text()
+      setText(result)
     }
-    run();
-  });
+    run()
+  })
 
   return (
     <div className="App">
@@ -31,7 +35,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,8 +1,8 @@
 module.exports = {
   env: {
-    'browser': true,
-    'es6': true,
-    'node': true
+    browser: true,
+    es6: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -14,15 +14,14 @@ module.exports = {
   parserOptions: {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint'
-  ],
+  plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/array-type': 'error',
     '@typescript-eslint/explicit-member-accessibility': [
-      'error', { 'accessibility': 'no-public' }
+      'error',
+      { accessibility: 'no-public' },
     ],
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-empty-function': 'off',
@@ -37,12 +36,10 @@ module.exports = {
     'no-shadow': 'off',
     'comma-dangle': 'off',
     'sort-keys': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { 'args':  'none' }],
+    '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/require-await': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
   },
-  ignorePatterns: [
-    'src/migrations/*.ts'
-  ]
-};
+  ignorePatterns: ['src/migrations/*.ts'],
+}

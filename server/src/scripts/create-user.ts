@@ -1,3 +1,5 @@
+import 'module-alias/register'
+
 // 3p
 // import { hashPassword } from '@foal/core';
 import { createConnection } from 'typeorm'

@@ -22,6 +22,9 @@
     "test:all": "yarn build:test && yarn start:test && yarn build:e2e && yarn start:e2e",
     "typecheck": "tsc --noEmit"
   },
+  "_moduleAliases": {
+    "~": "./build"
+  },
   "engines": {
     "node": ">=10"
   },
@@ -29,6 +32,7 @@
     "@foal/core": "^2.0.0",
     "@foal/typeorm": "^2.0.0",
     "better-sqlite3": "~7.1.2",
+    "module-alias": "^2.2.2",
     "source-map-support": "~0.5.19",
     "typeorm": "0.2.26"
   },

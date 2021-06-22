@@ -1,8 +1,7 @@
 {
   "name": "server",
   "version": "0.0.0",
-  "description": "description of the application",
-  "license": "MIT",
+  "private": true,
   "repository": {},
   "scripts": {
     "build": "foal rmdir build && tsc -p tsconfig.app.json",
@@ -19,7 +18,8 @@
     "makemigrations": "foal rmdir build && tsc -p tsconfig.app.json && npx typeorm migration:generate --name migration && tsc -p tsconfig.app.json",
     "migrations": "npx typeorm migration:run",
     "revertmigration": "npx typeorm migration:revert",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:all": "yarn build:test && yarn start:test && yarn build:e2e && yarn start:e2e"
   },
   "engines": {
     "node": ">=10"

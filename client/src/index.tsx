@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import { App } from './routes/app'
 import reportWebVitals from './report-web-vitals'
+import { defaultStyleSheet } from './theme'
+
+document.head.appendChild(defaultStyleSheet)
 
 ReactDOM.render(
   <React.StrictMode>

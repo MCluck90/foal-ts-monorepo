@@ -5,9 +5,15 @@
   "tasks": [
     {
       "type": "npm",
-      "script": "develop",
+      "script": "start",
       "problemMatcher": [],
-      "label": "npm: develop"
+      "label": "npm: start"
+    },
+    {
+      "type": "npm",
+      "script": "watch",
+      "problemMatcher": [],
+      "label": "npm: watch"
     },
     {
       "type": "npm",
@@ -18,17 +24,10 @@
     },
     {
       "type": "npm",
-      "script": "build:e2e",
-      "group": "build",
+      "script": "test",
+      "group": "test",
       "problemMatcher": [],
-      "label": "npm: build:e2e"
-    },
-    {
-      "type": "npm",
-      "script": "build:test",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: build:test"
+      "label": "npm: test"
     }
   ]
 }

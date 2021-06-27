@@ -2,11 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach to server",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node",
+      "restart": { "delay": 500, "maxAttempts": 5 }
+    },
+    {
       "type": "node",
       "request": "launch",
-      "name": "Start the server",
+      "name": "Launch server",
       "program": "${workspaceFolder}/build/index.js",
-      "preLaunchTask": "build",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "npm: build",
       "outFiles": ["${workspaceFolder}/build/**/*.js"],
       "internalConsoleOptions": "openOnSessionStart"
     },
@@ -23,7 +32,7 @@
         "./build/test.js",
         "${workspaceFolder}/build/**/*.spec.js"
       ],
-      "preLaunchTask": "build:test",
+      "preLaunchTask": "npm: build:test",
       "outFiles": ["${workspaceFolder}/build/**/*.js"],
       "internalConsoleOptions": "openOnSessionStart"
     },
@@ -40,7 +49,7 @@
         "./build/e2e.js",
         "${workspaceFolder}/build/e2e/**/*.js"
       ],
-      "preLaunchTask": "build:e2e",
+      "preLaunchTask": "npm: build:e2e",
       "outFiles": ["${workspaceFolder}/build/**/*.js"],
       "internalConsoleOptions": "openOnSessionStart"
     }

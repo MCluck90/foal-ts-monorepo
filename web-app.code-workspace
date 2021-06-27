@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "client"
+    },
+    {
+      "path": "server"
+    }
+  ],
+  "launch": {
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Debug",
+        "configurations": ["Attach to server", "Launch client"]
+      }
+    ]
+  }
+}

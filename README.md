@@ -16,11 +16,10 @@ This includes a set of tasks and debug configurations to immediately get you goi
 debugging. To get started:
 
 1. Open the command palette and run `Tasks: Run Task`
-2. Select the `npm: develop - server` task
-3. Repeat process and run `npm: start - client`
-4. Go to the debugging tab and run `Attach to server`
-5. Now select and run `Launch client`
-6. You are know debugging the server and the client at the same time!
+2. Select the `npm: develop` task to start the server
+3. Repeat process and run `npm: watch` to start the client
+4. Go to the debugging tab and run `Debug`
+6. You are now debugging the server and the client at the same time!
 
 ## Additional Technologies
 

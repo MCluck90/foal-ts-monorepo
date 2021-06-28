@@ -21,6 +21,3 @@ debugging. To get started:
 4. Go to the debugging tab and run `Debug`
 6. You are now debugging the server and the client at the same time!
 
-## Additional Technologies
-
-Check out other branches on here, such as `redux`, to get a version equipped to use that technology.

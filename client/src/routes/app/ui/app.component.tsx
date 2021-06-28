@@ -25,7 +25,14 @@ const useStyles = createUseStyles({
     color: '#61dafb',
   },
 
-  '@keyframes logoSpin': {},
+  '@keyframes logoSpin': {
+    from: {
+      transform: 'rotate(0deg)',
+    },
+    to: {
+      transform: 'rotate(360deg)',
+    },
+  },
   '@media (prefers-reduced-motion: no-preference)': {
     logo: {
       animation: '$logoSpin infinite 20s linear',

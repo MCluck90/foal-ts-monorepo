@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install && node ./scripts/inject-project-references.js"
+    "prepare": "husky install && node ./scripts/inject-project-references.js",
+    "format": "yarn workspaces run format"
   },
   "workspaces": {
     "packages": [
       "client",
+      "config/prettier",
       "server",
       "utility/common"
     ],

@@ -28,7 +28,9 @@
   "engines": {
     "node": ">=10"
   },
+  "prettier": "@config/prettier",
   "dependencies": {
+    "@config/prettier": "*",
     "@foal/core": "^2.0.0",
     "@foal/typeorm": "^2.0.0",
     "better-sqlite3": "~7.1.2",

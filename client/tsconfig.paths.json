@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "@utility/common/*": ["../utility/common/src/*"]
+      "@utility/common/*": ["../utility/common/src/*"],
+      "@config/prettier/*": ["../config/prettier/src/*"]
     }
   }
 }

@@ -25,6 +25,9 @@
   "exclude": ["node_modules"],
   "references": [
     {
+      "path": "../config/prettier"
+    },
+    {
       "path": "../utility/common"
     }
   ]

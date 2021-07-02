@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install && node ./scripts/inject-project-references.js"
   },
   "workspaces": {
     "packages": [
@@ -27,10 +27,13 @@
     "prettier": "^2.3.1"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,css,html}": "prettier --write"
+    "*.{ts,tsx,js,jsx,json,css,html}": "prettier --write"
   },
   "prepush-if-changed": {
     "client/**/*": "cd client && yarn test:all",
     "server/**/*": "cd server && yarn test:all"
+  },
+  "dependencies": {
+    "comment-json": "^4.1.0"
   }
 }

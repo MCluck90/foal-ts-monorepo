@@ -4,8 +4,11 @@ import './index.css'
 import { App } from './routes/app'
 import reportWebVitals from './report-web-vitals'
 import { defaultStyleSheet } from './theme'
+import { hasOwnProperty } from '@utility/common/object'
 
-document.head.appendChild(defaultStyleSheet)
+if (hasOwnProperty(document, 'head')) {
+  document.head.appendChild(defaultStyleSheet)
+}
 
 ReactDOM.render(
   <React.StrictMode>

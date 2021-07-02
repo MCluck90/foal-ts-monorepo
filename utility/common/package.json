@@ -3,10 +3,14 @@
   "name": "@utility/common",
   "version": "1.0.0",
   "description": "Common utilities used for both front and backend",
+  "exports": {
+    ".": "./build/index.js",
+    "./": "./build/"
+  },
   "scripts": {
-    "build": "yarn run clean && yarn run compile",
-    "clean": "rimraf -rf ./build",
-    "compile": "tsc",
+    "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "rebuild": "yarn run clean && yarn run build",
     "watch": "tsc -w",
     "test": "yarn run build",
     "typecheck": "tsc --noEmit"

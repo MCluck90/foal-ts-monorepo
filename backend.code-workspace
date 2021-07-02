@@ -1,0 +1,45 @@
+{
+  "folders": [
+    {
+      "name": "<root>",
+      "path": "."
+    },
+    {
+      "name": "@access/common",
+      "path": "access/common"
+    },
+    {
+      "name": "@utility/common",
+      "path": "utility/common"
+    },
+    {
+      "path": "server"
+    }
+  ],
+  "launch": {
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Debug",
+        "configurations": ["Attach to server"]
+      }
+    ]
+  },
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "access/**": true,
+      "client/**": true,
+      "config/**": true,
+      "engine/**": true,
+      "manager/**": true,
+      "scripts/**": true,
+      "server/**": true,
+      "utility/**": true
+    }
+  }
+}

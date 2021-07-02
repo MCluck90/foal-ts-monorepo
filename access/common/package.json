@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "@access/common",
+  "version": "1.0.0",
+  "description": "Common utilities used by @access packages",
+  "exports": {
+    ".": "./build/index.js",
+    "./": "./build/"
+  },
+  "scripts": {
+    "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
+    "build": "tsc",
+    "rebuild": "yarn run clean && yarn run build",
+    "watch": "tsc -w",
+    "test": "jest",
+    "test:all": "yarn test --watchAll=false --ci",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "create-migration": "typeorm migration:create -n",
+    "generate-migration": "ts-node ./node_modules/typeorm/cli.js migration:generate -n"
+  },
+  "prettier": "@config/prettier",
+  "dependencies": {
+    "@config/prettier": "*",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.14.0",
+    "@utility/common": "*",
+    "jest": "^27.0.6",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5.0.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typeorm": "0.2.26",
+    "typescript": "^4.3.4"
+  }
+}

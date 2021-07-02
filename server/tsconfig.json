@@ -13,8 +13,14 @@
     "lib": ["es2017", "dom"],
     "baseUrl": "src",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@config/prettier/*": ["../config/prettier/src/*"]
     }
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../config/prettier"
+    }
+  ]
 }

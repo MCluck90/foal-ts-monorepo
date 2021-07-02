@@ -4,6 +4,7 @@
 const fs = require('fs')
 const path = require('path')
 const commentJson = require('comment-json')
+const { execSync } = require('child_process')
 const projectRoot = path.resolve(__dirname, '..')
 
 const toUnixPath = (str) => str.replace(/\\/g, '/')
@@ -48,6 +49,7 @@ const packages = workspacePackages
   })
   .reduce((acc, package) => ({ ...acc, [package.name]: package }), {})
 
+let shouldFormatTsConfigs = false
 for (const pkg of Object.values(packages)) {
   const references = []
   const referencePathAliases = []
@@ -85,5 +87,15 @@ for (const pkg of Object.values(packages)) {
       fs.writeFileSync(paths.path, commentJson.stringify(paths.config, null, 2))
     }
     console.log(`Updated references for \`${pkg.name}\``)
+    shouldFormatTsConfigs = true
+  }
+}
+
+if (shouldFormatTsConfigs) {
+  try {
+    execSync('yarn prettier --write **/tsconfig.*json', { cwd: projectRoot })
+  } catch (e) {
+    console.error(e)
+    process.exit(1)
   }
 }

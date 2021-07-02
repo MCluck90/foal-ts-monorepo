@@ -1,4 +1,4 @@
-import { stripIndentation } from '@utility/common/string'
+import { stripIndentation } from '../string'
 
 describe('stripIndentation', () => {
   it('should act as an identity function when no line breaks are given', () => {

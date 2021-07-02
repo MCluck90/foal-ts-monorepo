@@ -31,7 +31,8 @@
   },
   "prepush-if-changed": {
     "client/**/*": "cd client && yarn test:all",
-    "server/**/*": "cd server && yarn test:all"
+    "server/**/*": "cd server && yarn test:all",
+    "utility/common/**/*": "cd utility/common && yarn test:all"
   },
   "dependencies": {
     "comment-json": "^4.1.0"

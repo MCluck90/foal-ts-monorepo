@@ -12,11 +12,15 @@
     "build": "tsc",
     "rebuild": "yarn run clean && yarn run build",
     "watch": "tsc -w",
-    "test": "yarn run build",
+    "test": "jest",
+    "test:all": "yarn test --watchAll=false --ci",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^27.0.6",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
   }
 }

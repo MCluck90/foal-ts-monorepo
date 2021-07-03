@@ -81,9 +81,11 @@ for (const pkg of Object.values(packages)) {
     }
     for (const { name, referencePath } of referencePathAliases) {
       paths.config.compilerOptions.paths[`${name}`] = [`${referencePath}/src`]
-      paths.config.compilerOptions.paths[`${name}/*`] = [
-        `${referencePath}/src/*`,
-      ]
+      if (name !== '@config/prettier') {
+        paths.config.compilerOptions.paths[`${name}/*`] = [
+          `${referencePath}/src/*`,
+        ]
+      }
     }
     fs.writeFileSync(main.path, commentJson.stringify(main.config, null, 2))
     if (paths !== main) {
@@ -98,7 +100,7 @@ if (shouldFormatTsConfigs) {
   try {
     execSync('yarn prettier --write **/tsconfig.*json', { cwd: projectRoot })
   } catch (e) {
-    console.error(e)
+    console.error(e.toString())
     process.exit(1)
   }
 }

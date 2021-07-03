@@ -14,14 +14,14 @@
     "baseUrl": "src",
     "paths": {
       "~/*": ["./*"],
-      "@config/prettier/*": ["../config/prettier/src/*"],
-      "@config/prettier": ["../config/prettier/src"]
+      "@config/prettier/*": ["../.config/prettier/src/*"],
+      "@config/prettier": ["../.config/prettier/src"]
     }
   },
   "include": ["src/**/*.ts"],
   "references": [
     {
-      "path": "../config/prettier"
+      "path": "../.config/prettier"
     }
   ]
 }

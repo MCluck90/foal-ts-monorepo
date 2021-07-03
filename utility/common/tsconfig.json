@@ -5,14 +5,14 @@
     "rootDir": "./src",
     "composite": true,
     "paths": {
-      "@config/prettier/*": ["../../config/prettier/src/*"],
-      "@config/prettier": ["../../config/prettier/src"]
+      "@config/prettier/*": ["../../.config/prettier/src/*"],
+      "@config/prettier": ["../../.config/prettier/src"]
     }
   },
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../../config/prettier"
+      "path": "../../.config/prettier"
     }
   ]
 }

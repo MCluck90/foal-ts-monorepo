@@ -8,10 +8,10 @@
   },
   "workspaces": {
     "packages": [
+      ".config/prettier",
       "access/common",
       "access/todo",
       "client",
-      "config/prettier",
       "server",
       "utility/common"
     ],

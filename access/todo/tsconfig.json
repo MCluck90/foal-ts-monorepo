@@ -8,10 +8,10 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "@config/prettier/*": ["../../config/prettier/src/*"],
+      "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@access/common": ["../common/src"],
       "@access/common/*": ["../common/src/*"],
-      "@config/prettier": ["../../config/prettier/src"],
+      "@config/prettier": ["../../.config/prettier/src"],
       "@utility/common": ["../../utility/common/src"],
       "@utility/common/*": ["../../utility/common/src/*"]
     }
@@ -19,10 +19,10 @@
   "include": ["types/*", "src/**/*"],
   "references": [
     {
-      "path": "../common"
+      "path": "../../.config/prettier"
     },
     {
-      "path": "../../config/prettier"
+      "path": "../common"
     },
     {
       "path": "../../utility/common"

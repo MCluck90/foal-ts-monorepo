@@ -19,6 +19,7 @@
       "**/@types/jest",
       "**/@types/mocha",
       "**/@types/testing-library__jest-dom",
+      "**/jest",
       "**/module-alias",
       "**/typeorm",
       "**/typeorm/**"

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install && node ./scripts/inject-project-references.js",
-    "format": "yarn workspaces run format"
+    "postinstall": "husky install && node ./scripts/inject-project-references.js",
+    "format": "yarn workspaces run format",
+    "new": "node ./scripts/new-project.js"
   },
   "workspaces": {
     "packages": [
@@ -42,6 +43,7 @@
     "utility/common/**/*": "cd utility/common && yarn test:all"
   },
   "dependencies": {
-    "comment-json": "^4.1.0"
+    "comment-json": "^4.1.0",
+    "fs-extra": "^10.0.0"
   }
 }

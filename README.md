@@ -21,3 +21,17 @@ debugging. To get started:
 4. Go to the debugging tab and run `Debug`
 6. You are now debugging the server and the client at the same time!
 
+
+## Creating New Projects
+
+Use the `new` script to create new projects for use in this repo.
+
+```
+Usage: yarn new [type] [name]
+```
+
+### Example
+
+```sh
+$ yarn new engine validation
+```

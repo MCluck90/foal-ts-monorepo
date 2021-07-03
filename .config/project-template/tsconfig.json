@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "./src",
+    "composite": true,
+    "paths": {
+      "@config/prettier/*": ["../../.config/prettier/src/*"],
+      "@config/prettier": ["../../.config/prettier/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "../../.config/prettier"
+    }
+  ]
+}

@@ -17,10 +17,9 @@
       "**/CVS": true,
       "**/.DS_Store": true,
       "access/**": true,
-      "client/**": true,
+      "app/**": true,
       "engine/**": true,
       "manager/**": true,
-      "server/**": true,
       "utility/**": true
     }
   }

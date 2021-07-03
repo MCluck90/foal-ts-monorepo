@@ -28,13 +28,12 @@
       "**/.hg": true,
       "**/CVS": true,
       "**/.DS_Store": true,
+      ".config/**": true,
       "access/**": true,
-      "client/**": true,
-      "config/**": true,
+      "app/**": true,
       "engine/**": true,
       "manager/**": true,
       "scripts/**": true,
-      "server/**": true,
       "utility/**": true
     }
   }

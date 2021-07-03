@@ -59,8 +59,33 @@ async function main() {
       JSON.stringify(workspacePackage, null, 2),
     )
 
-    execSync('yarn prettier --write package.json', { cwd: workspaceRoot })
     execSync('yarn install', { cwd: workspaceRoot })
+
+    // Add mapping to jest.config.js
+    const jestConfigPath = path.join(workspaceRoot, '.config/jest.config.js')
+    const jestConfig = require(jestConfigPath)
+    jestConfig.moduleNameMapper[
+      `${packageName}(.*)`
+    ] = `<rootDir>/../../${projectType}/${projectName}/src$1`
+
+    // Sort keys
+    const moduleMapping = JSON.parse(
+      JSON.stringify(jestConfig.moduleNameMapper),
+    )
+    jestConfig.moduleNameMapper = {}
+    for (const [key, value] of Object.entries(moduleMapping).sort(([a], [b]) =>
+      a.localeCompare(b),
+    )) {
+      jestConfig.moduleNameMapper[key] = value
+    }
+    fs.writeFileSync(
+      jestConfigPath,
+      `module.exports = ${JSON.stringify(jestConfig)}`,
+    )
+
+    execSync('yarn prettier --write package.json .config/jest.config.js', {
+      cwd: workspaceRoot,
+    })
 
     console.log(`Created ${packageName}`)
   } catch (err) {

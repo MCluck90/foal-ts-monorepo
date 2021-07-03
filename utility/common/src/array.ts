@@ -1,6 +1,8 @@
+import * as Option from 'fp-ts/Option'
 import { Lazy } from 'fp-ts/function'
 import { NonEmptyArray } from 'fp-ts/NonEmptyArray'
 import { Nullish } from './types'
+import { isNotNull } from './type-guards'
 
 /**
  * Get the first item in an array.
@@ -23,3 +25,15 @@ export const firstOrDefault = <T, U>(
  */
 export const isNotEmpty = <T>(arr: T[]): arr is NonEmptyArray<T> =>
   arr.length > 0
+
+/**
+ * Applies the given function to each element of the list. Return the list comprised of the results for each
+ * element where the function returns `Some`
+ */
+export const choose =
+  <T, U>(chooser: (v: T) => Option.Option<U>) =>
+  (source: T[]): U[] =>
+    source
+      .map(chooser)
+      .map(Option.getOrElseW(() => null))
+      .filter(isNotNull)

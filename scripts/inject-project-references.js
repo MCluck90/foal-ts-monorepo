@@ -75,9 +75,12 @@ for (const pkg of Object.values(packages)) {
       commentJson.stringify(main.config.references)
   ) {
     main.config.references = references
-    paths.config.compilerOptions.paths =
-      paths.config.compilerOptions.paths || {}
+    if (paths.config.compilerOptions) {
+      paths.config.compilerOptions.paths =
+        paths.config.compilerOptions.paths || {}
+    }
     for (const { name, referencePath } of referencePathAliases) {
+      paths.config.compilerOptions.paths[`${name}`] = [`${referencePath}/src`]
       paths.config.compilerOptions.paths[`${name}/*`] = [
         `${referencePath}/src/*`,
       ]

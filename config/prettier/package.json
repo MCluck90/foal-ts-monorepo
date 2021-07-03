@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "rebuild": "exit 0",
     "format": "prettier --write ."
   }
 }

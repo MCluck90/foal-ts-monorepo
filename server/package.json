@@ -20,7 +20,8 @@
     "revertmigration": "npx typeorm migration:revert",
     "format": "prettier --write .",
     "test:all": "yarn build:test && yarn start:test && yarn build:e2e && yarn start:e2e",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "rebuild": "yarn build"
   },
   "_moduleAliases": {
     "~": "./build"
@@ -47,6 +48,7 @@
     "eslint": "^6.7.0",
     "mocha": "~8.2.0",
     "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
     "supertest": "~6.0.0",
     "supervisor": "~0.12.0",
     "typescript": "~4.0.2"

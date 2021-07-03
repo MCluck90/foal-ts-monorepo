@@ -9,6 +9,10 @@
       "path": "access/common"
     },
     {
+      "name": "@access/todo",
+      "path": "access/todo"
+    },
+    {
       "name": "@utility/common",
       "path": "utility/common"
     },

@@ -4,19 +4,23 @@
     "outDir": "build",
     "rootDir": "./src",
     "composite": true,
-    "lib": ["es5", "es6"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "paths": {
       "@config/prettier/*": ["../../config/prettier/src/*"],
-      "@utility/common/*": ["../../utility/common/src/*"],
+      "@access/common": ["../common/src"],
+      "@access/common/*": ["../common/src/*"],
       "@config/prettier": ["../../config/prettier/src"],
-      "@utility/common": ["../../utility/common/src"]
+      "@utility/common": ["../../utility/common/src"],
+      "@utility/common/*": ["../../utility/common/src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
   "references": [
+    {
+      "path": "../common"
+    },
     {
       "path": "../../config/prettier"
     },

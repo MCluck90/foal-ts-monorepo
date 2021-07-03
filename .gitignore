@@ -1,4 +1,6 @@
-node_modules/
-build/
+*.db
 *.tsbuildinfo
+.env
+build/
+node_modules/
 yarn-error.log

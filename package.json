@@ -9,6 +9,7 @@
   "workspaces": {
     "packages": [
       "access/common",
+      "access/todo",
       "client",
       "config/prettier",
       "server",

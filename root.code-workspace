@@ -1,0 +1,27 @@
+{
+  "folders": [
+    {
+      "name": "<root>",
+      "path": "."
+    }
+  ],
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "access/**": true,
+      "client/**": true,
+      "engine/**": true,
+      "manager/**": true,
+      "server/**": true,
+      "utility/**": true
+    }
+  }
+}

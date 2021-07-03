@@ -25,10 +25,10 @@
   "exclude": ["node_modules"],
   "references": [
     {
-      "path": "../.config/prettier"
+      "path": "../../.config/prettier"
     },
     {
-      "path": "../utility/common"
+      "path": "../../utility/common"
     }
   ]
 }

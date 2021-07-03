@@ -11,8 +11,8 @@
       ".config/prettier",
       "access/common",
       "access/todo",
-      "client",
-      "server",
+      "app/client",
+      "app/server",
       "utility/common"
     ],
     "nohoist": [

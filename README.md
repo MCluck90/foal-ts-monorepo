@@ -22,9 +22,9 @@ debugging. To get started:
 6. You are now debugging the server and the client at the same time!
 
 
-## Creating New Projects
+## Creating New Packages
 
-Use the `new` script to create new projects for use in this repo.
+Use the `new` script to create new packages for use in this repo.
 
 ```
 Usage: yarn new [type] [name]

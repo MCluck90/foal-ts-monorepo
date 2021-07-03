@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "husky install && node ./scripts/inject-project-references.js",
     "format": "yarn workspaces run format",
-    "new": "node ./scripts/new-project.js"
+    "new": "node ./scripts/new-package.js"
   },
   "workspaces": {
     "packages": [

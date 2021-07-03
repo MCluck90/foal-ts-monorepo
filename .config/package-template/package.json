@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@project/template",
+  "name": "@package/template",
   "version": "1.0.0",
   "exports": {
     ".": "./build/index.js",

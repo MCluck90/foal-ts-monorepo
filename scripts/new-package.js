@@ -2,28 +2,28 @@ const { execSync } = require('child_process')
 const fs = require('fs-extra')
 const path = require('path')
 
-const projectTypes = ['access', 'engine', 'manager', 'utility']
+const types = ['access', 'engine', 'manager', 'utility']
 
 const usage = () => console.error(`Usage: yarn new [type] [name]`)
 
 async function main() {
-  const [, , projectType, projectName, description] = process.argv
-  if (!projectTypes.includes(projectType)) {
-    console.error(`Must use one of these types: ${projectTypes.join(' ')}`)
+  const [, , type, name, description] = process.argv
+  if (!types.includes(type)) {
+    console.error(`Must use one of these types: ${types.join(' ')}`)
     usage()
     process.exit(1)
   }
 
-  if (!projectName) {
+  if (!name) {
     console.error('Please provide a name')
     usage()
     process.exit(1)
   }
 
   try {
-    const packageName = `@${projectType}/${projectName}`
-    const templateRoot = path.join(__dirname, '../.config/project-template')
-    const packageRoot = path.join(__dirname, '..', projectType, projectName)
+    const packageName = `@${type}/${name}`
+    const templateRoot = path.join(__dirname, '../.config/package-template')
+    const packageRoot = path.join(__dirname, '..', type, name)
     await fs.copy(templateRoot, packageRoot)
 
     // Change package name
@@ -31,7 +31,7 @@ async function main() {
     const packageContents = fs.readFileSync(packagePath).toString()
     fs.writeFileSync(
       packagePath,
-      packageContents.replace('@project/template', packageName),
+      packageContents.replace('@package/template', packageName),
     )
 
     // Remove lines in test file to keep VS Code from screaming
@@ -46,7 +46,7 @@ async function main() {
     const workspaceRoot = path.join(__dirname, '..')
     const workspacePackagePath = path.join(workspaceRoot, 'package.json')
     const workspacePackage = require(workspacePackagePath)
-    workspacePackage.workspaces.packages.push(`${projectType}/${projectName}`)
+    workspacePackage.workspaces.packages.push(`${type}/${name}`)
 
     // Remove any duplicates and sort
     workspacePackage.workspaces.packages = Array.from(
@@ -66,7 +66,7 @@ async function main() {
     const jestConfig = require(jestConfigPath)
     jestConfig.moduleNameMapper[
       `${packageName}(.*)`
-    ] = `<rootDir>/../../${projectType}/${projectName}/src$1`
+    ] = `<rootDir>/../../${type}/${name}/src$1`
 
     // Sort keys
     const moduleMapping = JSON.parse(

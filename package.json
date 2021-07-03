@@ -37,8 +37,8 @@
   "prepush-if-changed": {
     "access/common/**/*": "cd access/common && yarn test:all",
     "access/todo/**/*": "cd access/todo && yarn test:all",
-    "client/**/*": "cd client && yarn test:all",
-    "server/**/*": "cd server && yarn test:all",
+    "app/client/**/*": "cd app/client && yarn test:all",
+    "app/server/**/*": "cd app/server && yarn test:all",
     "utility/common/**/*": "cd utility/common && yarn test:all"
   },
   "dependencies": {

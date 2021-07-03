@@ -35,7 +35,8 @@
     "*.{ts,tsx,js,jsx,json,css,html}": "prettier --write"
   },
   "prepush-if-changed": {
-    "access/common/**/*": "cd utility/common && yarn test:all",
+    "access/common/**/*": "cd access/common && yarn test:all",
+    "access/todo/**/*": "cd access/todo && yarn test:all",
     "client/**/*": "cd client && yarn test:all",
     "server/**/*": "cd server && yarn test:all",
     "utility/common/**/*": "cd utility/common && yarn test:all"

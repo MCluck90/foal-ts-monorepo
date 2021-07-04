@@ -11,18 +11,18 @@ describe('Todo', () => {
   })
 
   afterEach(async () => {
-    connection.createQueryBuilder().delete().from(Todo).execute()
+    await connection.close()
   })
 
   test('should be able to save and return a todo item', async () => {
     const testTodo = {
-      id: 1,
+      id: 'test-id',
       text: 'Test',
       done: true,
     }
     const insertResult = await connection.getRepository(Todo).insert(testTodo)
 
-    expect(insertResult.identifiers[0].id).toBe(1)
+    expect(insertResult.identifiers[0].id).toBe(testTodo.id)
 
     const todoItem = await connection
       .getRepository(Todo)

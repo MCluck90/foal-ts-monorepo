@@ -1,13 +1,11 @@
-import { Option } from 'fp-ts/Option'
-
 export interface TodoDto {
-  id: number
+  id: string
   text: string
   done: boolean
 }
 
 export interface TodoQuery {
-  id?: number
+  id?: string
   text?: string
   done?: boolean
 }

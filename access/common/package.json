@@ -16,8 +16,10 @@
     "test:all": "yarn test --watchAll=false --ci",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "create-migration": "typeorm migration:create -n",
-    "generate-migration": "ts-node ./node_modules/typeorm/cli.js migration:generate -n"
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migration:create": "yarn typeorm migration:create -n",
+    "migration:generate": "yarn typeorm migration:generate -n",
+    "migration:run": "yarn typeorm migration:run"
   },
   "prettier": "@config/prettier",
   "dependencies": {

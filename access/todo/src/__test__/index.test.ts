@@ -1,24 +1,24 @@
-import { createConnection } from '@access/common'
+import { Connection, createConnection } from '@access/common'
 import { integrationConnectionConfig } from '@access/common/config/integration'
 import { TodoAccess } from '..'
 import { ITodoAccess } from '../types'
 
 describe('TodoAccess', () => {
   let todoAccess: ITodoAccess
+  let connection: Connection
 
-  beforeAll(async () => {
-    const connection = await createConnection(integrationConnectionConfig)
+  beforeEach(async () => {
+    connection = await createConnection(integrationConnectionConfig)
     todoAccess = TodoAccess(connection)
-    await todoAccess.remove({})
   })
 
   afterEach(async () => {
-    await todoAccess.remove({})
+    await connection.close()
   })
 
   test('should be able to store and query for a todo by ID', async () => {
     const testTodo = {
-      id: 1,
+      id: 'test-a',
       text: 'Test',
       done: true,
     }
@@ -31,7 +31,7 @@ describe('TodoAccess', () => {
 
   test('should be able to remove a todo by ID', async () => {
     const testTodo = {
-      id: 2,
+      id: 'test-a',
       text: 'Test 2',
       done: false,
     }
@@ -47,17 +47,17 @@ describe('TodoAccess', () => {
 
   test('should be able to count the number of todos that have some text', async () => {
     await todoAccess.store({
-      id: 1,
+      id: 'test-a',
       text: 'Match',
       done: false,
     })
     await todoAccess.store({
-      id: 2,
+      id: 'test-b',
       text: 'No',
       done: false,
     })
     await todoAccess.store({
-      id: 3,
+      id: 'test-c',
       text: 'Match',
       done: false,
     })

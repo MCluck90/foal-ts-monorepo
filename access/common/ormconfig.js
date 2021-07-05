@@ -1,11 +1,15 @@
+const path = require('path')
+
+const toPath = (str) => path.join(__dirname, str)
+
 module.exports = {
   type: 'sqlite',
   database: 'dev.db',
   synchronize: false,
   logging: false,
-  entities: ['src/entity/**/*.ts'],
-  migrations: ['src/migration/**/*.ts'],
-  subscribers: ['src/subscriber/**/*.ts'],
+  entities: [toPath('src/entity/**/*.ts')],
+  migrations: [toPath('src/migration/**/*.ts')],
+  subscribers: [toPath('src/subscriber/**/*.ts')],
   cli: {
     entitiesDir: 'src/entity',
     migrationsDir: 'src/migration',

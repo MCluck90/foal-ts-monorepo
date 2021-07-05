@@ -14,8 +14,10 @@ export class Result<T = never, E = never> implements IterableIterator<T> {
   /**
    * Contains the success value.
    */
-  static Ok<T>(value: T) {
-    return new Result<T, never>(true, value, null as never)
+  static Ok<T extends void>(): Result<T, never>
+  static Ok<T>(value: T): Result<T, never>
+  static Ok<T>(value?: T) {
+    return new Result<T, never>(true, value as T, null as never)
   }
 
   /**

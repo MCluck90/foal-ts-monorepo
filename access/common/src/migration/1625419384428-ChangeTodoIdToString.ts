@@ -1,7 +1,7 @@
 import { stripIndentation } from '@utility/common/string'
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
-export class ChangeTodoIDToString1625419384428 implements MigrationInterface {
+export class ChangeTodoIdToString1625419384428 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.renameTable('todo', 'todo_old')
     await queryRunner.query(stripIndentation`
@@ -11,7 +11,6 @@ export class ChangeTodoIDToString1625419384428 implements MigrationInterface {
     INSERT INTO todo 
       SELECT *
       FROM todo_old
-    
     `)
     await queryRunner.dropTable('todo_old')
   }

@@ -1,0 +1,36 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "./src",
+    "composite": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@config/prettier/*": ["../../.config/prettier/src/*"],
+      "@config/prettier": ["../../.config/prettier/src"],
+      "@access/todo": ["../../access/todo/src"],
+      "@access/todo/*": ["../../access/todo/src/*"],
+      "@utility/common": ["../../utility/common/src"],
+      "@utility/common/*": ["../../utility/common/src/*"],
+      "@access/common": ["../../access/common/src"],
+      "@access/common/*": ["../../access/common/src/*"]
+    }
+  },
+  "include": ["types/*", "src/**/*"],
+  "references": [
+    {
+      "path": "../../.config/prettier"
+    },
+    {
+      "path": "../../access/common"
+    },
+    {
+      "path": "../../access/todo"
+    },
+    {
+      "path": "../../utility/common"
+    }
+  ]
+}

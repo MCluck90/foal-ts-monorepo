@@ -14,6 +14,7 @@
       "access/todo",
       "app/client",
       "app/server",
+      "engine/validation",
       "utility/common"
     ],
     "nohoist": [
@@ -40,6 +41,7 @@
     "access/todo/**/*": "cd access/todo && yarn test:all",
     "app/client/**/*": "cd app/client && yarn test:all",
     "app/server/**/*": "cd app/server && yarn test:all",
+    "engine/validation/**/*": "cd engine/validation && yarn test:all",
     "utility/common/**/*": "cd utility/common && yarn test:all"
   },
   "dependencies": {

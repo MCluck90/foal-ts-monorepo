@@ -9,7 +9,7 @@
       "@config/prettier": ["../../.config/prettier/src"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["types/*", "src/**/*"],
   "references": [
     {
       "path": "../../.config/prettier"

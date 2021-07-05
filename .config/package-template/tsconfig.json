@@ -4,6 +4,9 @@
     "outDir": "build",
     "rootDir": "./src",
     "composite": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"]

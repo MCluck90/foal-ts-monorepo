@@ -1,7 +1,9 @@
 import { ITodoAccess, TodoDto } from './types'
-import { Connection, FindOperator, Like } from '@access/common'
+import { Connection, Like } from '@access/common'
 import { Todo } from '@access/common/entity/todo'
 import { isNotNull } from '@utility/common/type-guards'
+
+export * from './types'
 
 export const TodoAccess = (connection: Connection): ITodoAccess => ({
   async query(query): Promise<TodoDto[]> {

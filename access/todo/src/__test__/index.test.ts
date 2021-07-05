@@ -9,7 +9,7 @@ describe('TodoAccess', () => {
 
   beforeEach(async () => {
     connection = await createConnection(integrationConnectionConfig)
-    todoAccess = TodoAccess(connection)
+    todoAccess = new TodoAccess(connection)
   })
 
   afterEach(async () => {

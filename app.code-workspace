@@ -1,10 +1,12 @@
 {
   "folders": [
     {
-      "path": "app/client"
+      "path": "app/client",
+      "name": "@app/client"
     },
     {
-      "path": "app/server"
+      "path": "app/server",
+      "name": "@app/server"
     }
   ],
   "launch": {

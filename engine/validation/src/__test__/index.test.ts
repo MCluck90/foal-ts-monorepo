@@ -1,7 +1,9 @@
 import { TodoDto } from '@access/todo'
-import { canStoreTodo } from '../todo-validation'
+import { ValidationEngine } from '..'
 
-describe('todo-validation', () => {
+describe('ValidationEngine', () => {
+  let validationEngine = new ValidationEngine()
+
   describe('canStoreTodo', () => {
     test('should return Ok when given a valid todo', async () => {
       const todo: TodoDto = {
@@ -10,7 +12,7 @@ describe('todo-validation', () => {
         done: false,
       }
 
-      const result = await canStoreTodo(todo)
+      const result = await validationEngine.canStoreTodo(todo)
       expect(result.isOk())
     })
 
@@ -21,7 +23,7 @@ describe('todo-validation', () => {
         done: true,
       }
 
-      const result = await canStoreTodo(todo)
+      const result = await validationEngine.canStoreTodo(todo)
       result.match({
         Ok() {
           throw new Error(
@@ -41,7 +43,7 @@ describe('todo-validation', () => {
         done: true,
       }
 
-      const result = await canStoreTodo(todo)
+      const result = await validationEngine.canStoreTodo(todo)
       result.match({
         Ok() {
           throw new Error(

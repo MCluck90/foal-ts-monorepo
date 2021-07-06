@@ -1,33 +1,14 @@
 {
   "folders": [
-    {
-      "name": "<root>",
-      "path": "."
-    },
-    {
-      "name": "@access/common",
-      "path": "access/common"
-    },
-    {
-      "name": "@access/todo",
-      "path": "access/todo"
-    },
-    {
-      "name": "@utility/common",
-      "path": "utility/common"
-    },
-    {
-      "path": "server"
-    }
+    { "name": "@access/common", "path": "access/common" },
+    { "name": "@access/todo", "path": "access/todo" },
+    { "name": "@utility/common", "path": "utility/common" },
+    { "name": "<root>", "path": "." },
+    { "name": "server", "path": "server" }
   ],
   "launch": {
     "configurations": [],
-    "compounds": [
-      {
-        "name": "Debug",
-        "configurations": ["Attach to server"]
-      }
-    ]
+    "compounds": [{ "name": "Debug", "configurations": ["Attach to server"] }]
   },
   "settings": {
     "files.exclude": {

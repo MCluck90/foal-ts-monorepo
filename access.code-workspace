@@ -1,26 +1,11 @@
 {
   "folders": [
-    {
-      "name": "<root>",
-      "path": "."
-    },
-    {
-      "name": "@access/common",
-      "path": "access/common"
-    },
-    {
-      "name": "@access/todo",
-      "path": "access/todo"
-    },
-    {
-      "name": "@utility/common",
-      "path": "utility/common"
-    },
+    { "name": "@access/common", "path": "access/common" },
+    { "name": "@access/todo", "path": "access/todo" },
+    { "name": "@utility/common", "path": "utility/common" },
+    { "name": "<root>", "path": "." }
   ],
-  "launch": {
-    "configurations": [],
-    "compounds": []
-  },
+  "launch": { "configurations": [], "compounds": [] },
   "settings": {
     "files.exclude": {
       "**/.git": true,

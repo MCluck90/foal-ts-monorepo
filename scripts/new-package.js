@@ -6,8 +6,40 @@ const types = ['access', 'engine', 'manager', 'utility']
 
 const usage = () => console.error(`Usage: yarn new [type] [name]`)
 
+async function addToCodeWorkspace(projectRoot, workspaceType, type, name) {
+  const packageName = `@${type}/${name}`
+  const workspaceFileName = `${workspaceType}.code-workspace`
+
+  try {
+    const packagePath = `${type}/${name}`
+
+    const codeWorkspaceFilePath = path.join(projectRoot, workspaceFileName)
+    const codeWorkspace = JSON.parse(
+      fs.readFileSync(codeWorkspaceFilePath).toString(),
+    )
+    const alreadyInFolders = !!codeWorkspace.folders.find(
+      ({ name }) => name === packageName,
+    )
+    if (alreadyInFolders) {
+      return
+    }
+
+    codeWorkspace.folders.push({ name: packageName, path: packagePath })
+    codeWorkspace.folders.sort(({ name: nameA }, { name: nameB }) =>
+      nameA.localeCompare(nameB),
+    )
+    fs.writeFileSync(codeWorkspaceFilePath, JSON.stringify(codeWorkspace))
+    execSync(
+      `yarn prettier --write --parser json ${workspaceType}.code-workspace`,
+    )
+  } catch (e) {
+    console.error(`Error while adding ${packageName} to ${workspaceFileName}`)
+    console.error(e)
+  }
+}
+
 async function main() {
-  const [, , type, name, description] = process.argv
+  const [, , type, name] = process.argv
   if (!types.includes(type)) {
     console.error(`Must use one of these types: ${types.join(' ')}`)
     usage()
@@ -86,6 +118,17 @@ async function main() {
     execSync('yarn prettier --write package.json .config/jest.config.js', {
       cwd: workspaceRoot,
     })
+
+    const typeToWorkspaces = {
+      access: ['backend', 'manager', 'engine', 'access'],
+      engine: ['backend', 'manager', 'engine', 'access'],
+      manager: ['backend', 'manager'],
+      utility: ['app', 'backend', 'manager', 'engine', 'access'],
+    }
+
+    for (const wp of typeToWorkspaces[type]) {
+      await addToCodeWorkspace(workspaceRoot, wp, type, name)
+    }
 
     console.log(`Created ${packageName}`)
   } catch (err) {

@@ -98,12 +98,22 @@ async function main() {
     const workspacePackagePath = path.join(workspaceRoot, 'package.json')
     const workspacePackage = require(workspacePackagePath)
     workspacePackage.workspaces.packages.push(`${type}/${name}`)
+    const prepushIfChanged = {
+      ...workspacePackage['prepush-if-changed'],
+    }
+    prepushIfChanged[
+      `${type}/${name}/**/*`
+    ] = `cd ${type}/${name} && yarn test:all`
 
     // Remove any duplicates and sort
     workspacePackage.workspaces.packages = Array.from(
       new Set(workspacePackage.workspaces.packages),
     )
     workspacePackage.workspaces.packages.sort()
+    workspacePackage['prepush-if-changed'] = {}
+    for (const key of Object.keys(prepushIfChanged).sort()) {
+      workspacePackage['prepush-if-changed'][key] = prepushIfChanged[key]
+    }
 
     fs.writeFileSync(
       workspacePackagePath,

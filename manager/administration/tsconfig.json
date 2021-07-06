@@ -10,8 +10,8 @@
     "paths": {
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"],
-      "@access/todo": ["../../access/todo/src"],
-      "@access/todo/*": ["../../access/todo/src/*"],
+      "@access/task": ["../../access/task/src"],
+      "@access/task/*": ["../../access/task/src/*"],
       "@utility/common": ["../../utility/common/src"],
       "@utility/common/*": ["../../utility/common/src/*"],
       "@engine/validation": ["../../engine/validation/src"],
@@ -29,7 +29,7 @@
       "path": "../../access/common"
     },
     {
-      "path": "../../access/todo"
+      "path": "../../access/task"
     },
     {
       "path": "../../engine/validation"

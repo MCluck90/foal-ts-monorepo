@@ -1,83 +1,83 @@
 import * as uuid from 'uuid'
-import { ITodoAccess, TodoDto, TodoQuery } from '@access/todo'
-import { IValidationEngine, TodoValidationErrorDto } from '@engine/validation'
+import { ITaskAccess, TaskDto, TaskQuery } from '@access/task'
+import { IValidationEngine, TaskValidationErrorDto } from '@engine/validation'
 import { Result } from '@utility/common/result'
 import {
-  AddTodoDto,
+  AddTaskDto,
   IAdministrationManager,
-  RemoveTodoDto,
-  RemoveTodoErrorDto,
-  UpdateTodoDto,
-  UpdateTodoError,
+  RemoveTaskDto,
+  RemoveTaskErrorDto,
+  UpdateTaskDto,
+  UpdateTaskError,
 } from './types'
 
 export class AdministrationManager implements IAdministrationManager {
   constructor(
-    private readonly todoAccess: ITodoAccess,
+    private readonly taskAccess: ITaskAccess,
     private readonly validationEngine: IValidationEngine,
   ) {}
 
-  async findTodos(query: TodoQuery): Promise<TodoDto[]> {
-    return this.todoAccess.query(query)
+  async findTasks(query: TaskQuery): Promise<TaskDto[]> {
+    return this.taskAccess.query(query)
   }
 
-  async addTodo(
-    addTodoDto: AddTodoDto,
-  ): Promise<Result<TodoDto, TodoValidationErrorDto>> {
-    const todo: TodoDto = {
-      ...addTodoDto,
+  async addTask(
+    addTaskDto: AddTaskDto,
+  ): Promise<Result<TaskDto, TaskValidationErrorDto>> {
+    const task: TaskDto = {
+      ...addTaskDto,
       id: uuid.v4(),
       done: false,
     }
 
-    const validationResult = await this.validationEngine.canStoreTodo(todo)
+    const validationResult = await this.validationEngine.canStoreTask(task)
     if (validationResult.isErr()) {
       return validationResult
     }
 
-    await this.todoAccess.store(todo)
-    return Result.Ok(todo)
+    await this.taskAccess.store(task)
+    return Result.Ok(task)
   }
 
-  async updateTodo(
-    updateTodoDto: UpdateTodoDto,
-  ): Promise<Result<TodoDto, UpdateTodoError>> {
-    const existingTodos = await this.todoAccess.query({ id: updateTodoDto.id })
-    if (existingTodos.length === 0) {
+  async updateTask(
+    updateTaskDto: UpdateTaskDto,
+  ): Promise<Result<TaskDto, UpdateTaskError>> {
+    const existingTasks = await this.taskAccess.query({ id: updateTaskDto.id })
+    if (existingTasks.length === 0) {
       return Result.Err({
         type: 'does-not-exist',
-        message: `Could not find todo with ID: ${updateTodoDto.id}`,
+        message: `Could not find task with ID: ${updateTaskDto.id}`,
       })
     }
 
-    const existingTodo = existingTodos[0]
-    const updatedTodo = {
-      ...existingTodo,
-      ...updateTodoDto,
+    const existingTask = existingTasks[0]
+    const updatedTask = {
+      ...existingTask,
+      ...updateTaskDto,
     }
-    const validationResult = await this.validationEngine.canStoreTodo(
-      updatedTodo,
+    const validationResult = await this.validationEngine.canStoreTask(
+      updatedTask,
     )
     if (validationResult.isErr()) {
       return validationResult
     }
 
-    await this.todoAccess.store(updatedTodo)
-    return Result.Ok(updatedTodo)
+    await this.taskAccess.store(updatedTask)
+    return Result.Ok(updatedTask)
   }
 
-  async removeTodo(
-    removeTodoDto: RemoveTodoDto,
-  ): Promise<Result<void, RemoveTodoErrorDto>> {
-    const existingTodos = await this.todoAccess.query({ id: removeTodoDto.id })
-    if (existingTodos.length === 0) {
+  async removeTask(
+    removeTaskDto: RemoveTaskDto,
+  ): Promise<Result<void, RemoveTaskErrorDto>> {
+    const existingTasks = await this.taskAccess.query({ id: removeTaskDto.id })
+    if (existingTasks.length === 0) {
       return Result.Err({
         type: 'does-not-exist',
-        message: `Could not find todo with ID: ${removeTodoDto.id}`,
+        message: `Could not find task with ID: ${removeTaskDto.id}`,
       })
     }
 
-    await this.todoAccess.remove({ id: removeTodoDto.id })
+    await this.taskAccess.remove({ id: removeTaskDto.id })
     return Result.Ok()
   }
 }

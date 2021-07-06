@@ -1,13 +1,13 @@
-import { TodoDto } from '@access/todo/types'
+import { TaskDto } from '@access/task/types'
 import { Result } from '@utility/common/result'
 
-export type TodoValidationErrorDto = {
+export type TaskValidationErrorDto = {
   type: 'no-text'
   message: 'Text cannot be empty'
 }
 
-export interface ITodoValidationEngine {
-  canStoreTodo(todo: TodoDto): Promise<Result<void, TodoValidationErrorDto>>
+export interface ITaskValidationEngine {
+  canStoreTask(task: TaskDto): Promise<Result<void, TaskValidationErrorDto>>
 }
 
-export interface IValidationEngine extends ITodoValidationEngine {}
+export interface IValidationEngine extends ITaskValidationEngine {}

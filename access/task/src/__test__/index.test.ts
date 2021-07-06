@@ -1,22 +1,22 @@
 import { Connection, createConnection } from '@access/common'
 import { integrationConnectionConfig } from '@access/common/config/integration'
-import { TodoAccess } from '..'
-import { ITodoAccess } from '../types'
+import { TaskAccess } from '..'
+import { ITaskAccess } from '../types'
 
-describe('TodoAccess', () => {
-  let todoAccess: ITodoAccess
+describe('TaskAccess', () => {
+  let todoAccess: ITaskAccess
   let connection: Connection
 
   beforeEach(async () => {
     connection = await createConnection(integrationConnectionConfig)
-    todoAccess = new TodoAccess(connection)
+    todoAccess = new TaskAccess(connection)
   })
 
   afterEach(async () => {
     await connection.close()
   })
 
-  test('should be able to store and query for a todo by ID', async () => {
+  test('should be able to store and query for a task by ID', async () => {
     const testTodo = {
       id: 'test-a',
       text: 'Test',
@@ -29,7 +29,7 @@ describe('TodoAccess', () => {
     expect(todos[0]).toEqual(testTodo)
   })
 
-  test('should be able to remove a todo by ID', async () => {
+  test('should be able to remove a task by ID', async () => {
     const testTodo = {
       id: 'test-a',
       text: 'Test 2',

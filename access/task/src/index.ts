@@ -1,14 +1,14 @@
-import { ITodoAccess, TodoDto, TodoQuery } from './types'
+import { ITaskAccess, TaskDto, TaskQuery } from './types'
 import { Connection, Like } from '@access/common'
 import { Todo } from '@access/common/entity/todo'
 import { isNotNull } from '@utility/common/type-guards'
 
 export * from './types'
 
-export class TodoAccess implements ITodoAccess {
+export class TaskAccess implements ITaskAccess {
   constructor(private readonly connection: Connection) {}
 
-  async query(query: TodoQuery): Promise<TodoDto[]> {
+  async query(query: TaskQuery): Promise<TaskDto[]> {
     const todoRepository = this.connection.getRepository(Todo)
     return todoRepository.find({
       where: [
@@ -19,7 +19,7 @@ export class TodoAccess implements ITodoAccess {
     })
   }
 
-  async count(query: TodoQuery): Promise<number> {
+  async count(query: TaskQuery): Promise<number> {
     const todoRepository = this.connection.getRepository(Todo)
     return todoRepository.count({
       where: [
@@ -30,13 +30,13 @@ export class TodoAccess implements ITodoAccess {
     })
   }
 
-  async store(todo: TodoDto): Promise<void> {
+  async store(task: TaskDto): Promise<void> {
     const todoRepository = this.connection.getRepository(Todo)
-    await todoRepository.save([todo])
+    await todoRepository.save([task])
     return Promise.resolve()
   }
 
-  async remove(query: TodoQuery): Promise<void> {
+  async remove(query: TaskQuery): Promise<void> {
     const todoRepository = this.connection.getRepository(Todo)
     await todoRepository.delete({
       id: query.id,

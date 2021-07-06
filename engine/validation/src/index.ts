@@ -1,8 +1,8 @@
-import { canStoreTodo } from './todo-validation'
+import { canStoreTask } from './task-validation'
 import { IValidationEngine } from './types'
 
 export * from './types'
 
 export class ValidationEngine implements IValidationEngine {
-  canStoreTodo = canStoreTodo
+  canStoreTask = canStoreTask
 }

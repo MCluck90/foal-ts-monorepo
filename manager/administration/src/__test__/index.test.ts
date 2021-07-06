@@ -1,21 +1,21 @@
 import { Connection, createConnection } from '@access/common'
 import { integrationConnectionConfig } from '@access/common/config/integration'
-import { ITodoAccess, TodoAccess, TodoDto } from '@access/todo'
+import { ITaskAccess, TaskAccess, TaskDto } from '@access/task'
 import { ValidationEngine } from '@engine/validation'
 import { AdministrationManager } from '..'
-import { AddTodoDto, IAdministrationManager } from '../types'
+import { AddTaskDto, IAdministrationManager } from '../types'
 
 describe('AdministrationManager', () => {
   let administrationManager: IAdministrationManager
   let connection: Connection
-  let todoAccess: ITodoAccess
+  let taskAccess: ITaskAccess
 
   beforeEach(async () => {
     connection = await createConnection(integrationConnectionConfig)
-    todoAccess = new TodoAccess(connection)
+    taskAccess = new TaskAccess(connection)
     const validationEngine = new ValidationEngine()
     administrationManager = new AdministrationManager(
-      todoAccess,
+      taskAccess,
       validationEngine,
     )
   })
@@ -24,14 +24,14 @@ describe('AdministrationManager', () => {
     await connection.close()
   })
 
-  test('should return todos that match a query', async () => {
-    const todoWithId: TodoDto = {
+  test('should return tasks that match a query', async () => {
+    const taskWithId: TaskDto = {
       id: 'look-at-this-id',
       text: 'text',
       done: false,
     }
 
-    const todosWithText: TodoDto[] = [
+    const tasksWithText: TaskDto[] = [
       {
         id: 'abc',
         text: 'Shared text',
@@ -44,9 +44,9 @@ describe('AdministrationManager', () => {
       },
     ]
 
-    const notDoneTodos = [
-      todoWithId,
-      ...todosWithText,
+    const notDoneTasks = [
+      taskWithId,
+      ...tasksWithText,
       {
         id: 'def',
         text: 'Other',
@@ -54,7 +54,7 @@ describe('AdministrationManager', () => {
       },
     ]
 
-    const doneTodos = [
+    const doneTasks = [
       {
         id: 'ghi',
         text: 'ghi',
@@ -67,40 +67,40 @@ describe('AdministrationManager', () => {
       },
     ]
 
-    for (const todo of notDoneTodos.concat(doneTodos)) {
-      await todoAccess.store(todo)
+    for (const task of notDoneTasks.concat(doneTasks)) {
+      await taskAccess.store(task)
     }
 
-    const byIdResult = await administrationManager.findTodos({
-      id: todoWithId.id,
+    const byIdResult = await administrationManager.findTasks({
+      id: taskWithId.id,
     })
     expect(byIdResult.length).toBe(1)
-    expect(byIdResult[0]).toEqual(todoWithId)
+    expect(byIdResult[0]).toEqual(taskWithId)
 
-    const byTextResult = await administrationManager.findTodos({
+    const byTextResult = await administrationManager.findTasks({
       text: 'Shared text',
     })
-    expect(byTextResult).toEqual(todosWithText)
+    expect(byTextResult).toEqual(tasksWithText)
 
-    const notDoneResult = await administrationManager.findTodos({
+    const notDoneResult = await administrationManager.findTasks({
       done: false,
     })
-    expect(notDoneResult).toEqual(notDoneTodos)
+    expect(notDoneResult).toEqual(notDoneTasks)
 
-    const doneResult = await administrationManager.findTodos({
+    const doneResult = await administrationManager.findTasks({
       done: true,
     })
-    expect(doneResult).toEqual(doneTodos)
+    expect(doneResult).toEqual(doneTasks)
   })
 
-  test('should succeed when adding a new todo', async () => {
-    const addTodoDto: AddTodoDto = {
-      text: 'Todo',
+  test('should succeed when adding a new task', async () => {
+    const addTaskDto: AddTaskDto = {
+      text: 'Task',
     }
-    const addResult = await administrationManager.addTodo(addTodoDto)
+    const addResult = await administrationManager.addTask(addTaskDto)
     addResult.match({
-      Ok(todo) {
-        expect(todo.text).toBe(addTodoDto.text)
+      Ok(task) {
+        expect(task.text).toBe(addTaskDto.text)
       },
       Err(err) {
         throw new Error(err.message)
@@ -108,14 +108,14 @@ describe('AdministrationManager', () => {
     })
   })
 
-  test('should fail when attempting to add an invalid todo', async () => {
-    const addTodoDto: AddTodoDto = {
+  test('should fail when attempting to add an invalid task', async () => {
+    const addTaskDto: AddTaskDto = {
       text: '',
     }
-    const addResult = await administrationManager.addTodo(addTodoDto)
+    const addResult = await administrationManager.addTask(addTaskDto)
     addResult.match({
       Ok() {
-        throw new Error('Should have failed to add invalid todo')
+        throw new Error('Should have failed to add invalid task')
       },
       Err(err) {
         expect(err.type).toBe('no-text')
@@ -123,26 +123,26 @@ describe('AdministrationManager', () => {
     })
   })
 
-  test('should succeed when updating an existing todo', async () => {
-    const addResult = await administrationManager.addTodo({ text: 'Test' })
+  test('should succeed when updating an existing task', async () => {
+    const addResult = await administrationManager.addTask({ text: 'Test' })
     expect(addResult.isOk()).toBe(true)
 
-    const todo = addResult.unwrap()
-    expect(todo.text).toBe('Test')
+    const task = addResult.unwrap()
+    expect(task.text).toBe('Test')
 
-    const updateResult = await administrationManager.updateTodo({
-      id: todo.id,
+    const updateResult = await administrationManager.updateTask({
+      id: task.id,
       text: 'End test',
     })
     expect(updateResult.isOk()).toBe(true)
 
-    const updatedTodo = updateResult.unwrap()
-    expect(updatedTodo.id).toBe(todo.id)
-    expect(updatedTodo.text).toBe('End test')
+    const updatedTask = updateResult.unwrap()
+    expect(updatedTask.id).toBe(task.id)
+    expect(updatedTask.text).toBe('End test')
   })
 
-  test('should fail when attempting to update todo which does not exist', async () => {
-    const updateResult = await administrationManager.updateTodo({
+  test('should fail when attempting to update task which does not exist', async () => {
+    const updateResult = await administrationManager.updateTask({
       id: 'fake',
       text: 'Will fail',
     })
@@ -150,32 +150,32 @@ describe('AdministrationManager', () => {
     expect(updateResult.unwrapErr().type).toBe('does-not-exist')
   })
 
-  test('should fail when attempting to update a todo with an empty message', async () => {
-    const addResult = await administrationManager.addTodo({ text: 'Test' })
+  test('should fail when attempting to update a task with an empty message', async () => {
+    const addResult = await administrationManager.addTask({ text: 'Test' })
     expect(addResult.isOk()).toBe(true)
 
-    const todo = addResult.unwrap()
-    const updateResult = await administrationManager.updateTodo({
-      id: todo.id,
+    const task = addResult.unwrap()
+    const updateResult = await administrationManager.updateTask({
+      id: task.id,
       text: '',
     })
     expect(updateResult.isErr()).toBe(true)
     expect(updateResult.unwrapErr().type).toBe('no-text')
   })
 
-  test('should succeed when removing an existing todo', async () => {
-    const addResult = await administrationManager.addTodo({ text: 'Test' })
+  test('should succeed when removing an existing task', async () => {
+    const addResult = await administrationManager.addTask({ text: 'Test' })
     expect(addResult.isOk()).toBe(true)
 
-    const todo = addResult.unwrap()
-    const removeResult = await administrationManager.removeTodo({
-      id: todo.id,
+    const task = addResult.unwrap()
+    const removeResult = await administrationManager.removeTask({
+      id: task.id,
     })
     expect(removeResult.isOk()).toBe(true)
   })
 
-  test('should fail when attempting to remove a todo which does not exist', async () => {
-    const removeResult = await administrationManager.removeTodo({
+  test('should fail when attempting to remove a task which does not exist', async () => {
+    const removeResult = await administrationManager.removeTask({
       id: 'does not exist',
     })
     expect(removeResult.isErr()).toBe(true)

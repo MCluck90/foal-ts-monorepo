@@ -2,7 +2,7 @@
   "folders": [
     { "name": "<root>", "path": "." },
     { "name": "@access/common", "path": "access/common" },
-    { "name": "@access/todo", "path": "access/todo" },
+    { "name": "@access/task", "path": "access/task" },
     { "name": "@engine/validation", "path": "engine/validation" },
     { "name": "@utility/common", "path": "utility/common" }
   ],

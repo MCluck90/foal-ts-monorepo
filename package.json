@@ -11,7 +11,7 @@
     "packages": [
       ".config/prettier",
       "access/common",
-      "access/todo",
+      "access/task",
       "app/client",
       "app/server",
       "engine/validation",
@@ -39,7 +39,7 @@
   },
   "prepush-if-changed": {
     "access/common/**/*": "cd access/common && yarn test:all",
-    "access/todo/**/*": "cd access/todo && yarn test:all",
+    "access/task/**/*": "cd access/task && yarn test:all",
     "app/client/**/*": "cd app/client && yarn test:all",
     "app/server/**/*": "cd app/server && yarn test:all",
     "engine/validation/**/*": "cd engine/validation && yarn test:all",

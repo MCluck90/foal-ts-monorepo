@@ -19,7 +19,7 @@
   "prettier": "@config/prettier",
   "dependencies": {
     "@access/common": "*",
-    "@access/todo": "*",
+    "@access/task": "*",
     "@config/prettier": "*",
     "@engine/validation": "*",
     "@types/jest": "^26.0.23",

@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@access/todo",
+  "name": "@access/task",
   "version": "1.0.0",
-  "description": "Access todo items from a data source",
+  "description": "Access tasks from a data source",
   "exports": {
     ".": "./build/index.js",
     "./": "./build/"

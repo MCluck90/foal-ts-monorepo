@@ -1,33 +1,33 @@
-import { TodoDto } from '@access/todo'
+import { TaskDto } from '@access/task'
 import { ValidationEngine } from '..'
 
 describe('ValidationEngine', () => {
   let validationEngine = new ValidationEngine()
 
-  describe('canStoreTodo', () => {
-    test('should return Ok when given a valid todo', async () => {
-      const todo: TodoDto = {
+  describe('canStoreTask', () => {
+    test('should return Ok when given a valid task', async () => {
+      const task: TaskDto = {
         id: '123',
         text: 'Do a thing',
         done: false,
       }
 
-      const result = await validationEngine.canStoreTodo(todo)
+      const result = await validationEngine.canStoreTask(task)
       expect(result.isOk())
     })
 
-    test('should return an error when given a todo with an empty text', async () => {
-      const todo: TodoDto = {
+    test('should return an error when given a task with an empty text', async () => {
+      const task: TaskDto = {
         id: '456',
         text: '',
         done: true,
       }
 
-      const result = await validationEngine.canStoreTodo(todo)
+      const result = await validationEngine.canStoreTask(task)
       result.match({
         Ok() {
           throw new Error(
-            'canStoreTodo should return an error when given an empty text',
+            'canStoreTask should return an error when given an empty text',
           )
         },
         Err(error) {
@@ -37,17 +37,17 @@ describe('ValidationEngine', () => {
     })
 
     test('should return an error when the text is only whitespace', async () => {
-      const todo: TodoDto = {
+      const task: TaskDto = {
         id: '456',
         text: ' \r\n\t',
         done: true,
       }
 
-      const result = await validationEngine.canStoreTodo(todo)
+      const result = await validationEngine.canStoreTask(task)
       result.match({
         Ok() {
           throw new Error(
-            'canStoreTodo should return an error when given a todo with only whitespace',
+            'canStoreTask should return an error when given a task with only whitespace',
           )
         },
         Err(error) {

@@ -1,44 +1,44 @@
-import { TodoDto, TodoQuery } from '@access/todo'
-import { TodoValidationErrorDto } from '@engine/validation'
+import { TaskDto, TaskQuery } from '@access/task'
+import { TaskValidationErrorDto } from '@engine/validation'
 import { Result } from '@utility/common/result'
 
-export interface AddTodoDto {
+export interface AddTaskDto {
   text: string
 }
-export type AddTodoError = TodoValidationErrorDto
+export type AddTaskError = TaskValidationErrorDto
 
-export interface UpdateTodoDto {
+export interface UpdateTaskDto {
   id: string
   text?: string
   done?: boolean
 }
-export type UpdateTodoError =
-  | TodoValidationErrorDto
+export type UpdateTaskError =
+  | TaskValidationErrorDto
   | {
       type: 'does-not-exist'
       message: string
     }
 
-export interface RemoveTodoDto {
+export interface RemoveTaskDto {
   id: string
 }
-export interface RemoveTodoErrorDto {
+export interface RemoveTaskErrorDto {
   type: 'does-not-exist'
   message: string
 }
 
-export interface ITodoManager {
-  findTodos(query: TodoQuery): Promise<TodoDto[]>
+export interface ITaskManager {
+  findTasks(query: TaskQuery): Promise<TaskDto[]>
 
-  addTodo(addTodoDto: AddTodoDto): Promise<Result<TodoDto, AddTodoError>>
+  addTask(addTaskDto: AddTaskDto): Promise<Result<TaskDto, AddTaskError>>
 
-  updateTodo(
-    updateTodoDto: UpdateTodoDto,
-  ): Promise<Result<TodoDto, UpdateTodoError>>
+  updateTask(
+    updateTaskDto: UpdateTaskDto,
+  ): Promise<Result<TaskDto, UpdateTaskError>>
 
-  removeTodo(
-    removeTodoDto: RemoveTodoDto,
-  ): Promise<Result<void, RemoveTodoErrorDto>>
+  removeTask(
+    removeTaskDto: RemoveTaskDto,
+  ): Promise<Result<void, RemoveTaskErrorDto>>
 }
 
-export interface IAdministrationManager extends ITodoManager {}
+export interface IAdministrationManager extends ITaskManager {}

@@ -21,7 +21,11 @@
     "format": "prettier --write .",
     "test:all": "yarn build:test && yarn start:test && yarn build:e2e && yarn start:e2e",
     "typecheck": "tsc --noEmit",
-    "rebuild": "yarn build"
+    "rebuild": "yarn build",
+    "generate:controller": "foal generate controller",
+    "generate:hook": "foal generate hook",
+    "generate:script": "foal generate script",
+    "generate:service": "foal generate service"
   },
   "_moduleAliases": {
     "~": "./build"
@@ -34,6 +38,7 @@
     "@config/prettier": "*",
     "@foal/core": "^2.0.0",
     "@foal/typeorm": "^2.0.0",
+    "@manager/administration": "*",
     "better-sqlite3": "~7.1.2",
     "module-alias": "^2.2.2",
     "source-map-support": "~0.5.19",

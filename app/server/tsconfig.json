@@ -15,13 +15,18 @@
     "paths": {
       "~/*": ["./*"],
       "@config/prettier/*": ["../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"]
+      "@config/prettier": ["../../.config/prettier/src"],
+      "@manager/administration": ["../../manager/administration/src"],
+      "@manager/administration/*": ["../../manager/administration/src/*"]
     }
   },
   "include": ["src/**/*.ts"],
   "references": [
     {
       "path": "../../.config/prettier"
+    },
+    {
+      "path": "../../manager/administration"
     }
   ]
 }

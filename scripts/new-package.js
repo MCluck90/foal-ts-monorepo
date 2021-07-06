@@ -26,7 +26,7 @@ async function addToCodeWorkspace(projectRoot, workspaceType, type, name) {
 
     codeWorkspace.folders.push({ name: packageName, path: packagePath })
     codeWorkspace.folders.sort(({ name: nameA }, { name: nameB }) =>
-      nameA.localeCompare(nameB),
+      nameA[0] === '<' ? -1 : nameA.localeCompare(nameB),
     )
     fs.writeFileSync(codeWorkspaceFilePath, JSON.stringify(codeWorkspace))
     execSync(

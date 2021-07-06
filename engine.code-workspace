@@ -1,10 +1,10 @@
 {
   "folders": [
+    { "name": "<root>", "path": "." },
     { "name": "@access/common", "path": "access/common" },
     { "name": "@access/todo", "path": "access/todo" },
     { "name": "@engine/validation", "path": "engine/validation" },
-    { "name": "@utility/common", "path": "utility/common" },
-    { "name": "<root>", "path": "." }
+    { "name": "@utility/common", "path": "utility/common" }
   ],
   "launch": { "configurations": [], "compounds": [] },
   "settings": {

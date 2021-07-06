@@ -1,10 +1,11 @@
 {
   "folders": [
-    { "name": "<root>", "path": "." },
     { "name": "@access/common", "path": "access/common" },
     { "name": "@access/todo", "path": "access/todo" },
     { "name": "@engine/validation", "path": "engine/validation" },
+    { "name": "@manager/administration", "path": "manager/administration" },
     { "name": "@utility/common", "path": "utility/common" },
+    { "name": "<root>", "path": "." },
     { "name": "server", "path": "server" }
   ],
   "launch": {

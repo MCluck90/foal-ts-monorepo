@@ -11,7 +11,11 @@
     "test": "jest --watch",
     "test:ci": "jest --watchAll=false --ci",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "generate:controller": "foal generate controller",
+    "generate:hook": "foal generate hook",
+    "generate:script": "foal generate script",
+    "generate:service": "foal generate service"
   },
   "prettier": "@config/prettier",
   "_moduleAliases": {

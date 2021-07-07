@@ -16,7 +16,6 @@
       "app/server",
       "engine/validation",
       "manager/administration",
-      "app/new-server",
       "utility/common"
     ],
     "nohoist": [
@@ -45,7 +44,6 @@
     "app/server/**/*": "cd app/server && yarn test:all",
     "engine/validation/**/*": "cd engine/validation && yarn test:all",
     "manager/administration/**/*": "cd manager/administration && yarn test:all",
-    "app/new-server/**/*": "cd app/new-server && yarn test:all",
     "utility/common/**/*": "cd utility/common && yarn test:all"
   },
   "dependencies": {

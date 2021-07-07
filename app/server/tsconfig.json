@@ -1,26 +1,21 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "build",
-    "sourceMap": true,
-    "experimentalDecorators": true,
+    "rootDir": "./src",
+    "composite": true,
     "emitDecoratorMetadata": true,
-    "strict": true,
-    "noImplicitAny": false,
+    "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "module": "commonjs",
-    "target": "es2017",
-    "rootDir": "src",
-    "lib": ["es2017", "dom"],
-    "baseUrl": "src",
     "paths": {
-      "~/*": ["./*"],
-      "@config/prettier/*": ["../.config/prettier/src/*"],
+      "~/*": ["./src/*"],
+      "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"],
       "@manager/administration": ["../../manager/administration/src"],
       "@manager/administration/*": ["../../manager/administration/src/*"]
     }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["types/*", "src/**/*"],
   "references": [
     {
       "path": "../../.config/prettier"

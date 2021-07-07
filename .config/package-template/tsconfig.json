@@ -3,11 +3,13 @@
   "compilerOptions": {
     "outDir": "build",
     "rootDir": "./src",
+    "baseUrl": ".",
     "composite": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "paths": {
+      "~/*": ["./src/*"],
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"]
     }

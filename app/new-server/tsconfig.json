@@ -8,14 +8,20 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "paths": {
+      "~/*": ["./src/*"],
       "@config/prettier/*": ["../../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"]
+      "@config/prettier": ["../../.config/prettier/src"],
+      "@manager/administration": ["../../manager/administration/src"],
+      "@manager/administration/*": ["../../manager/administration/src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
   "references": [
     {
       "path": "../../.config/prettier"
+    },
+    {
+      "path": "../../manager/administration"
     }
   ]
 }

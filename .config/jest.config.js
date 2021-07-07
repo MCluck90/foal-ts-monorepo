@@ -3,6 +3,7 @@ module.exports = {
   testEnvironment: 'node',
   roots: ['src'],
   moduleNameMapper: {
+    '~(.*)': '<rootDir>/src$1',
     '@access/common(.*)': '<rootDir>/../../access/common/src$1',
     '@access/task(.*)': '<rootDir>/../../access/task/src$1',
     '@engine/validation(.*)': '<rootDir>/../../engine/validation/src$1',

@@ -9,7 +9,7 @@
     "clean": "rimraf ./build",
     "rebuild": "yarn clean && yarn build",
     "test": "craco test",
-    "test:all": "craco test --watchAll=false --ci",
+    "test:ci": "craco test --watchAll=false --ci",
     "eject": "craco eject",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"

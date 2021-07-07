@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "rebuild": "exit 0",
-    "test:all": "exit 0",
+    "test:ci": "exit 0",
     "format": "prettier --write ."
   }
 }

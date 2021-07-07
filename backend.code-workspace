@@ -4,6 +4,7 @@
     { "name": "@access/common", "path": "access/common" },
     { "name": "@access/task", "path": "access/task" },
     { "name": "@app/server", "path": "app/server" }
+    { "name": "@app/new-server", "path": "app/new-server" }
     { "name": "@engine/validation", "path": "engine/validation" },
     { "name": "@manager/administration", "path": "manager/administration" },
     { "name": "@utility/common", "path": "utility/common" },

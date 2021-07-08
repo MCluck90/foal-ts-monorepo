@@ -19,9 +19,12 @@ export class ApiController {
   }
 
   @Get('/tasks')
-  getTasks(ctx: Context) {
-    console.log(this.connection.manager)
-    return new HttpResponseOK()
-    // return new HttpResponseOK(this.administrationManager.findTasks({}))
+  async getTasks(ctx: Context) {
+    let tasks = await this.administrationManager.findTasks({})
+    if (tasks.length === 0) {
+      await this.administrationManager.addTask({ text: 'Hello world' })
+      tasks = await this.administrationManager.findTasks({})
+    }
+    return new HttpResponseOK(tasks)
   }
 }

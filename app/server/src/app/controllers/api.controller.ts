@@ -1,4 +1,3 @@
-import { Connection } from '@access/common'
 import { Context, dependency, Get, HttpResponseOK } from '@foal/core'
 import { AdministrationManager } from '@manager/administration'
 import { ApiService } from '~/app/services'
@@ -9,9 +8,6 @@ export class ApiController {
 
   @dependency
   administrationManager: AdministrationManager
-
-  @dependency
-  connection: Connection
 
   @Get('/')
   index(ctx: Context) {

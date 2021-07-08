@@ -8,26 +8,20 @@ import { Config, createApp, displayServerURL, ServiceManager } from '@foal/core'
 import { AppController } from './app/app.controller'
 import { AdministrationManager } from '@manager/administration'
 import { TaskAccess } from '@access/task'
-import { Connection, createConnection } from '@access/common'
+import { connect } from '@access/common'
 import { ValidationEngine } from '@engine/validation'
-import { Todo } from '@access/common/entity/todo'
 
 async function main() {
+  const connection = await connect()
+  await connection.runMigrations()
+
   const serviceManager = new ServiceManager()
-  const connection = await createConnection({
-    type: 'sqlite',
-    database: 'dev.db',
-    synchronize: true,
-    logging: false,
-    entities: [Todo],
-  })
   const taskAccess = new TaskAccess(connection)
   const validationEngine = new ValidationEngine()
   const administrationManager = new AdministrationManager(
     taskAccess,
     validationEngine,
   )
-  serviceManager.set(Connection, connection)
   serviceManager.set(AdministrationManager, administrationManager)
 
   const app = await createApp(AppController, {

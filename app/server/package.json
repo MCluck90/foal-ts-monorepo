@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
-    "build": "tsc",
+    "build": "tsc -b",
     "rebuild": "yarn run clean && yarn run build",
-    "dev": "ts-node src/index.ts",
+    "dev": "ts-node-dev src/index.ts",
     "watch": "tsc -w",
     "test": "jest --watch",
     "test:ci": "jest --watchAll=false --ci",
@@ -22,16 +22,21 @@
     "~": "./build"
   },
   "dependencies": {
+    "@access/common": "*",
+    "@access/task": "*",
     "@config/prettier": "*",
+    "@engine/validation": "*",
     "@foal/cli": "^2.5.0",
     "@foal/core": "^2.5.0",
     "@manager/administration": "*",
     "@types/jest": "^26.0.23",
+    "@utility/common": "*",
     "jest": "26.6.0",
     "module-alias": "^2.2.2",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.19",
     "ts-jest": "26.5.6",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.4"
   }
 }

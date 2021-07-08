@@ -11,6 +11,8 @@ import {
   UpdateTaskError,
 } from './types'
 
+export * from './types'
+
 export class AdministrationManager implements IAdministrationManager {
   constructor(
     private readonly taskAccess: ITaskAccess,

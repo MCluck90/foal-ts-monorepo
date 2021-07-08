@@ -12,7 +12,15 @@
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"],
       "@manager/administration": ["../../manager/administration/src"],
-      "@manager/administration/*": ["../../manager/administration/src/*"]
+      "@manager/administration/*": ["../../manager/administration/src/*"],
+      "@access/common": ["../../access/common/src"],
+      "@access/common/*": ["../../access/common/src/*"],
+      "@access/task": ["../../access/task/src"],
+      "@access/task/*": ["../../access/task/src/*"],
+      "@engine/validation": ["../../engine/validation/src"],
+      "@engine/validation/*": ["../../engine/validation/src/*"],
+      "@utility/common": ["../../utility/common/src"],
+      "@utility/common/*": ["../../utility/common/src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
@@ -21,7 +29,19 @@
       "path": "../../.config/prettier"
     },
     {
+      "path": "../../access/common"
+    },
+    {
+      "path": "../../access/task"
+    },
+    {
+      "path": "../../engine/validation"
+    },
+    {
       "path": "../../manager/administration"
+    },
+    {
+      "path": "../../utility/common"
     }
   ]
 }

@@ -1,6 +1,3 @@
-import 'module-alias/register'
-import 'source-map-support/register'
-
 // std
 import * as http from 'http'
 
@@ -32,7 +29,6 @@ async function main() {
   )
   serviceManager.set(Connection, connection)
   serviceManager.set(AdministrationManager, administrationManager)
-  console.log(connection.manager)
 
   const app = await createApp(AppController, {
     serviceManager,

@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "build",
+    "baseUrl": ".",
     "rootDir": "./src",
     "composite": true,
     "emitDecoratorMetadata": true,

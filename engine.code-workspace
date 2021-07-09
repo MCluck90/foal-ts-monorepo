@@ -1,6 +1,5 @@
 {
   "folders": [
-    { "name": "<root>", "path": "." },
     { "name": "@access/common", "path": "access/common" },
     { "name": "@access/task", "path": "access/task" },
     { "name": "@engine/validation", "path": "engine/validation" },

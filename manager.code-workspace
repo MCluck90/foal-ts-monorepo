@@ -4,8 +4,7 @@
     { "name": "@access/task", "path": "access/task" },
     { "name": "@engine/validation", "path": "engine/validation" },
     { "name": "@manager/administration", "path": "manager/administration" },
-    { "name": "@utility/common", "path": "utility/common" },
-    { "name": "<root>", "path": "." }
+    { "name": "@utility/common", "path": "utility/common" }
   ],
   "launch": { "configurations": [], "compounds": [] },
   "settings": {

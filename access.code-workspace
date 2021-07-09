@@ -2,8 +2,7 @@
   "folders": [
     { "name": "@access/common", "path": "access/common" },
     { "name": "@access/task", "path": "access/task" },
-    { "name": "@utility/common", "path": "utility/common" },
-    { "name": "<root>", "path": "." }
+    { "name": "@utility/common", "path": "utility/common" }
   ],
   "launch": { "configurations": [], "compounds": [] },
   "settings": {

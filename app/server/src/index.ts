@@ -6,24 +6,11 @@ import { Config, createApp, displayServerURL, ServiceManager } from '@foal/core'
 
 // App
 import { AppController } from './app/app.controller'
-import { AdministrationManager } from '@manager/administration'
-import { TaskAccess } from '@access/task'
-import { createConnection } from '@access/common'
-import { ValidationEngine } from '@engine/validation'
+import { setupServiceManager } from './setup'
 
 async function main() {
   console.log('Initializing dependencies...')
-  const connection = await createConnection()
-  await connection.runMigrations()
-
-  const serviceManager = new ServiceManager()
-  const taskAccess = new TaskAccess(connection)
-  const validationEngine = new ValidationEngine()
-  const administrationManager = new AdministrationManager(
-    taskAccess,
-    validationEngine,
-  )
-  serviceManager.set(AdministrationManager, administrationManager)
+  const serviceManager = await setupServiceManager()
 
   const app = await createApp(AppController, {
     serviceManager,

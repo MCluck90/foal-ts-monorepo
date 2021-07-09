@@ -28,13 +28,13 @@ export class TasksController {
   @dependency
   administrationManager: AdministrationManager
 
-  @Get()
+  @Get('/')
   async getTasks(ctx: Context) {
     const tasks = await this.administrationManager.findTasks()
     return new HttpResponseOK(tasks)
   }
 
-  @Post()
+  @Post('/')
   @ValidateBody({
     additionalProperties: false,
     properties: {
@@ -56,7 +56,7 @@ export class TasksController {
     })
   }
 
-  @Put()
+  @Put('/')
   @ValidateBody({
     additionalProperties: false,
     properties: {
@@ -80,7 +80,7 @@ export class TasksController {
     })
   }
 
-  @Delete()
+  @Delete('/')
   @ValidateBody({
     additionalProperties: false,
     properties: {

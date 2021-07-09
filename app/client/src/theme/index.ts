@@ -1,11 +1,13 @@
 export enum Theme {
-  Background = 'var(--app-background)',
-  Text = 'var(--app-text)',
+  BackgroundColor = 'var(--app-background-color)',
+  PrimaryFont = 'var(--app-primary-font)',
+  TextColor = 'var(--app-text-color)',
 }
 
 const defaultValues: Record<Theme, string> = {
-  [Theme.Background]: '#222',
-  [Theme.Text]: '#eee',
+  [Theme.BackgroundColor]: '#222',
+  [Theme.PrimaryFont]: 'Arial, Helvetica, sans-serif',
+  [Theme.TextColor]: '#eee',
 }
 
 const getPropertyName = (propertyReference: string): string =>

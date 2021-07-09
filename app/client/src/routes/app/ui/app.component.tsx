@@ -13,14 +13,14 @@ const useStyles = createUseStyles({
     pointerEvents: 'none',
   },
   header: {
-    backgroundColor: Theme.Background,
+    backgroundColor: Theme.BackgroundColor,
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-    color: Theme.Text,
+    color: Theme.TextColor,
   },
   link: {
     color: '#61dafb',
@@ -101,6 +101,7 @@ export function App() {
     <div className={styles.app}>
       <header className={styles.header}>
         <img src={logo} className={styles.logo} alt="logo" />
+        <h1>Todos</h1>
         <CreateTodo onSave={() => getTasks()} />
         <div>
           {tasks.map((task) => (

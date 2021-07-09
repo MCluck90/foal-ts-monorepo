@@ -5,14 +5,15 @@
   "scripts": {
     "start": "craco start",
     "watch": "cross-env BROWSER=none craco start",
-    "build": "craco build",
+    "eject": "craco eject",
     "clean": "rimraf ./build",
+    "build": "craco build",
     "rebuild": "yarn clean && yarn build",
     "test": "craco test",
     "test:ci": "craco test --watchAll=false --ci",
-    "eject": "craco eject",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "storybook": "start-storybook -p 6006 -s public"
   },
   "dependencies": {
     "@config/prettier": "*",
@@ -47,6 +48,16 @@
       "react-app",
       "react-app/jest",
       "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -66,5 +77,13 @@
     "moduleNameMapper": {
       "^~(.*)": "<rootDir>/src$1"
     }
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/node-logger": "^6.3.4",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.4"
   }
 }

@@ -1,13 +1,12 @@
 import { Connection } from 'typeorm'
 import { createConnection } from '..'
-import { integrationConnectionConfig } from '../config/integration'
 import { Todo } from '../entity/todo'
 
 describe('Todo', () => {
   let connection: Connection
 
   beforeAll(async () => {
-    connection = await createConnection(integrationConnectionConfig)
+    connection = await createConnection('integration')
   })
 
   afterEach(async () => {

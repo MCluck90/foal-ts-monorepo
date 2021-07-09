@@ -8,11 +8,11 @@ import { Config, createApp, displayServerURL, ServiceManager } from '@foal/core'
 import { AppController } from './app/app.controller'
 import { AdministrationManager } from '@manager/administration'
 import { TaskAccess } from '@access/task'
-import { connect } from '@access/common'
+import { createConnection } from '@access/common'
 import { ValidationEngine } from '@engine/validation'
 
 async function main() {
-  const connection = await connect()
+  const connection = await createConnection()
   await connection.runMigrations()
 
   const serviceManager = new ServiceManager()

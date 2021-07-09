@@ -1,5 +1,4 @@
 import { Connection, createConnection } from '@access/common'
-import { integrationConnectionConfig } from '@access/common/config/integration'
 import { ITaskAccess, TaskAccess, TaskDto } from '@access/task'
 import { ValidationEngine } from '@engine/validation'
 import { AdministrationManager } from '..'
@@ -11,7 +10,11 @@ describe('AdministrationManager', () => {
   let taskAccess: ITaskAccess
 
   beforeEach(async () => {
-    connection = await createConnection(integrationConnectionConfig)
+    if (connection) {
+      await connection.connect()
+    } else {
+      connection = await createConnection('integration')
+    }
     taskAccess = new TaskAccess(connection)
     const validationEngine = new ValidationEngine()
     administrationManager = new AdministrationManager(

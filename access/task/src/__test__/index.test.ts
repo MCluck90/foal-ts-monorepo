@@ -1,5 +1,4 @@
 import { Connection, createConnection } from '@access/common'
-import { integrationConnectionConfig } from '@access/common/config/integration'
 import { TaskAccess } from '..'
 import { ITaskAccess } from '../types'
 
@@ -8,7 +7,11 @@ describe('TaskAccess', () => {
   let connection: Connection
 
   beforeEach(async () => {
-    connection = await createConnection(integrationConnectionConfig)
+    if (connection) {
+      await connection.connect()
+    } else {
+      connection = await createConnection('integration')
+    }
     todoAccess = new TaskAccess(connection)
   })
 

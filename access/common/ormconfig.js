@@ -1,19 +1,31 @@
-const path = require('path')
-
-// const toPath = (str) => path.join(__dirname, str)
-const toPath = (str) => str
-
-module.exports = {
+const defaultConfig = {
   type: 'sqlite',
-  database: 'dev.db',
-  synchronize: false,
-  logging: false,
-  entities: [toPath('src/entity/*.{js,ts}')],
-  migrations: [toPath('src/migration/*.{js,ts}')],
-  subscribers: [toPath('src/subscriber/*.{js,ts}')],
+  entities: ['src/entity/*.{js,ts}'],
+  migrations: ['src/migration/*.{js,ts}'],
+  subscribers: ['src/subscriber/*.{js,ts}'],
   cli: {
     entitiesDir: 'src/entity',
     migrationsDir: 'src/migration',
     subscribersDir: 'src/subscriber',
   },
 }
+
+console.log(process.cwd())
+
+module.exports = [
+  {
+    ...defaultConfig,
+    name: 'default',
+    database: 'dev.db',
+    synchronize: false,
+    logging: false,
+  },
+  {
+    ...defaultConfig,
+    name: 'integration',
+    dropSchema: true,
+    synchronize: true,
+    database: 'integration.db',
+    loggerLevel: 'debug',
+  },
+]

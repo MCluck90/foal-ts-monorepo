@@ -11,7 +11,8 @@
         "delay": 500,
         "maxAttempts": 5
       },
-      "resolveSourceMapLocations": ["**", "!**/node_modules/**"]
+      "resolveSourceMapLocations": ["**", "!**/node_modules/**"],
+      "preLaunchTask": "npm: dev"
     },
     {
       "name": "Debug Tests",

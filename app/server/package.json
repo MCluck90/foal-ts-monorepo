@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "dev": "cross-env NODE_OPTIONS='--inspect-brk' ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "dev": "cross-env NODE_OPTIONS='--inspect' ts-node-dev -r tsconfig-paths/register src/index.ts",
     "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
     "build": "tsc -b",
     "rebuild": "yarn run clean && yarn run build",

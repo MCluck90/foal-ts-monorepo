@@ -1,7 +1,4 @@
-// std
 import { strictEqual } from 'assert'
-
-// 3p
 import {
   Context,
   createController,
@@ -9,8 +6,6 @@ import {
   getPath,
   isHttpResponseOK,
 } from '@foal/core'
-
-// App
 import { ApiController } from '~/app/controllers/api.controller'
 
 describe('ApiController', () => {

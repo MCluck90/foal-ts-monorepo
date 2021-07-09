@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": "<root>",
+      "path": "."
+    },
+    {
       "path": "app/client",
       "name": "@app/client"
     },
@@ -14,7 +18,7 @@
     "compounds": [
       {
         "name": "Debug",
-        "configurations": ["Attach to server", "Launch client"]
+        "configurations": ["Debug Server", "Debug Client"]
       }
     ]
   }

@@ -4,30 +4,44 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "npm",
-      "script": "start",
-      "problemMatcher": [],
-      "label": "npm: start"
-    },
-    {
+      "label": "Start client",
       "type": "npm",
       "script": "watch",
-      "problemMatcher": [],
-      "label": "npm: watch"
+      "isBackground": true,
+
+      // This task is run before debugging.
+      // However, since it's a watch script, we need to tell VS Code not to wait on it
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "."
+          }
+        }
+      ]
     },
     {
-      "type": "npm",
-      "script": "build",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: build"
-    },
+      "label": "Stop client",
+      "type": "shell",
+      "command": "echo ${input:terminate}",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
     {
-      "type": "npm",
-      "script": "test",
-      "group": "test",
-      "problemMatcher": [],
-      "label": "npm: test"
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "Start client"
     }
   ]
 }

@@ -22,6 +22,8 @@ export const createConnection = async (
     const config = await connectionOptionsReader.get(type)
     connection = await typeORMCreateConnection({
       ...config,
+      type: 'sqlite',
+      database: path.join(process.cwd(), `${type}.db`),
       entities: [__dirname + '/entity/**/*.{js,ts}'],
       migrations: [__dirname + '/migration/**/*.{js,ts}'],
       subscribers: [__dirname + '/subscriber/**/*.{js,ts}'],

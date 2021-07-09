@@ -10,8 +10,6 @@ const defaultConfig = {
   },
 }
 
-console.log(process.cwd())
-
 module.exports = [
   {
     ...defaultConfig,

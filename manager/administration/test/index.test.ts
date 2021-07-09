@@ -10,11 +10,7 @@ describe('AdministrationManager', () => {
   let taskAccess: ITaskAccess
 
   beforeEach(async () => {
-    if (connection) {
-      await connection.connect()
-    } else {
-      connection = await createConnection('integration')
-    }
+    connection = await createConnection('integration')
     taskAccess = new TaskAccess(connection)
     const validationEngine = new ValidationEngine()
     administrationManager = new AdministrationManager(

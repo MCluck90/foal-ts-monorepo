@@ -1,6 +1,6 @@
 import { Connection } from 'typeorm'
-import { createConnection } from '..'
-import { Todo } from '../entity/todo'
+import { createConnection } from '../src'
+import { Todo } from '../src/entity/todo'
 
 describe('Todo', () => {
   let connection: Connection

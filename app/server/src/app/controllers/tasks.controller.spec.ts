@@ -1,27 +1,8 @@
-import { ok, strictEqual } from 'assert'
-import {
-  Context,
-  createController,
-  getHttpMethod,
-  getPath,
-  isHttpResponseCreated,
-  isHttpResponseNoContent,
-  isHttpResponseOK,
-} from '@foal/core'
+import { strictEqual } from 'assert'
+import { getHttpMethod, getPath } from '@foal/core'
 import { TasksController } from './tasks.controller'
-import { AdministrationManager } from '@manager/administration'
-import { setupServiceManager } from '~/setup'
 
 describe('TasksController', () => {
-  let controller: TasksController
-
-  beforeEach(async () => {
-    const serviceManager = await setupServiceManager()
-    controller = createController(TasksController, {
-      administrationManager: serviceManager.get(AdministrationManager),
-    })
-  })
-
   describe('has a "getTasks" method that', () => {
     it('should handle requests at GET /.', () => {
       strictEqual(getHttpMethod(TasksController, 'getTasks'), 'GET')
@@ -43,7 +24,7 @@ describe('TasksController', () => {
     })
   })
 
-  describe('has an "deleteTask" method that', () => {
+  describe('has a "deleteTask" method that', () => {
     it('should handle requests at DELETE /.', () => {
       strictEqual(getHttpMethod(TasksController, 'deleteTask'), 'DELETE')
       strictEqual(getPath(TasksController, 'deleteTask'), '/')

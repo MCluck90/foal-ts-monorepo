@@ -14,7 +14,7 @@
       "@config/prettier": ["../../.config/prettier/src"]
     }
   },
-  "include": ["types/*", "src/**/*"],
+  "include": ["types/*", "src/**/*", "test/*"],
   "references": [
     {
       "path": "../../.config/prettier"

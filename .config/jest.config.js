@@ -12,4 +12,9 @@ module.exports = {
     '@manager/new-server(.*)': '<rootDir>/../../manager/new-server/src$1',
     '@utility/common(.*)': '<rootDir>/../../utility/common/src$1',
   },
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
 }

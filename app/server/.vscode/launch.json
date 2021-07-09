@@ -10,7 +10,8 @@
       "restart": {
         "delay": 500,
         "maxAttempts": 5
-      }
+      },
+      "resolveSourceMapLocations": ["**", "!**/node_modules/**"]
     },
     {
       "name": "Debug Tests",

@@ -12,6 +12,8 @@
     "rebuild": "yarn run clean && yarn run build",
     "watch": "tsc -w",
     "test": "jest --watch",
+    "test:unit": "jest --watch --roots src",
+    "test:integration": "jest --watch --roots test",
     "test:ci": "jest --watchAll=false --ci",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write ."

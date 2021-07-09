@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['src'],
+  roots: ['src', 'test'],
   moduleNameMapper: {
     '~(.*)': '<rootDir>/src$1',
     '@access/common(.*)': '<rootDir>/../../access/common/src$1',

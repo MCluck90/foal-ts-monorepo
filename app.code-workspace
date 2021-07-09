@@ -17,6 +17,11 @@
     "configurations": [],
     "compounds": [
       {
+        "presentation": {
+          "hidden": false,
+          "group": "",
+          "order": 1
+        },
         "name": "Debug",
         "configurations": ["Debug Server", "Debug Client"]
       }

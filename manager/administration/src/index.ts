@@ -19,7 +19,7 @@ export class AdministrationManager implements IAdministrationManager {
     private readonly validationEngine: IValidationEngine,
   ) {}
 
-  async findTasks(query: TaskQuery): Promise<TaskDto[]> {
+  async findTasks(query: TaskQuery = {}): Promise<TaskDto[]> {
     return this.taskAccess.query(query)
   }
 

@@ -28,7 +28,7 @@ export interface RemoveTaskErrorDto {
 }
 
 export interface ITaskManager {
-  findTasks(query: TaskQuery): Promise<TaskDto[]>
+  findTasks(query?: TaskQuery): Promise<TaskDto[]>
 
   addTask(addTaskDto: AddTaskDto): Promise<Result<TaskDto, AddTaskError>>
 

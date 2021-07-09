@@ -17,7 +17,8 @@
     "format": "prettier --write ."
   },
   "prettier": "@config/prettier",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@config/prettier": "*",
     "@types/jest": "^26.0.23",
     "jest": "26.6.0",

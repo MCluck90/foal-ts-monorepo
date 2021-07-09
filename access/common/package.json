@@ -23,14 +23,16 @@
   },
   "prettier": "@config/prettier",
   "dependencies": {
+    "@utility/common": "*",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
     "@config/prettier": "*",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.14.0",
-    "@utility/common": "*",
     "jest": "26.6.0",
-    "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "sqlite3": "^5.0.2",
     "ts-jest": "26.5.6",
     "ts-node": "^10.0.0",
     "typeorm": "0.2.26",

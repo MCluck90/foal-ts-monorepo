@@ -24,13 +24,15 @@
   "dependencies": {
     "@access/common": "*",
     "@access/task": "*",
-    "@config/prettier": "*",
     "@engine/validation": "*",
-    "@foal/cli": "^2.5.0",
     "@foal/core": "^2.5.0",
     "@manager/administration": "*",
+    "@utility/common": "*"
+  },
+  "devDependencies": {
+    "@config/prettier": "*",
+    "@foal/cli": "^2.5.0",
     "@types/jest": "^26.0.23",
-    "@utility/common": "*",
     "cross-env": "^7.0.3",
     "jest": "26.6.0",
     "rimraf": "^3.0.2",

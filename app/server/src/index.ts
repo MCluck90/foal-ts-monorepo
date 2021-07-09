@@ -12,6 +12,7 @@ import { createConnection } from '@access/common'
 import { ValidationEngine } from '@engine/validation'
 
 async function main() {
+  console.log('Initializing dependencies...')
   const connection = await createConnection()
   await connection.runMigrations()
 

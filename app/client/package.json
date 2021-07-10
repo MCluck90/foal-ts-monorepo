@@ -13,7 +13,8 @@
     "test:ci": "craco test --watchAll=false --ci && prettier --write tsconfig.json",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006 -s public"
+    "storybook": "start-storybook -p 6006 -s public",
+    "preinstall": "node ../../scripts/verify-dependency.js"
   },
   "prettier": "@config/prettier",
   "eslintConfig": {

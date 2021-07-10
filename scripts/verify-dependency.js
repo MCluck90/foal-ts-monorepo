@@ -8,6 +8,9 @@ const dependencyName = configArgv.original
   .find((arg) => !arg.startsWith('-'))
 
 const getScope = (name) => {
+  if (!name) {
+    return ''
+  }
   const match = name.match(/@([^/]+)/)
   if (!match) {
     return name
@@ -25,6 +28,7 @@ const allowedScopeLookup = {
   'app/server': ['access', 'engine', 'manager', 'utility'],
   engine: ['access', 'utility'],
   manager: ['access', 'engine', 'utility'],
+  utility: [],
 }
 
 const packageScope = getScope(packageName)

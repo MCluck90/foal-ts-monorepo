@@ -14,7 +14,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "storybook": "start-storybook -p 6006 -s public",
-    "preinstall": "node ../../scripts/verify-dependency.js"
+    "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
   },
   "prettier": "@config/prettier",
   "eslintConfig": {

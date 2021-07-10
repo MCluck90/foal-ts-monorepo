@@ -18,7 +18,7 @@
     "generate:hook": "foal generate hook",
     "generate:script": "foal generate script",
     "generate:service": "foal generate service",
-    "preinstall": "node ../../scripts/verify-dependency.js"
+    "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
   },
   "prettier": "@config/prettier",
   "_moduleAliases": {

@@ -4,6 +4,12 @@ Aims to be a starting point for a real application using FoalTS and React.
 
 ## Getting Started
 
+Install `path-exists`:
+
+```sh
+$ yarn global add path-exists-cli
+```
+
 Run `yarn install` to install Git hooks and install dependencies for the client and server.
 
 ### Using Yarn 2

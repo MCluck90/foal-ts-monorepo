@@ -1,4 +1,4 @@
-import { TaskDto } from '@access/task'
+import { TaskDto } from '@utility/common/dtos'
 import { ValidationEngine } from '..'
 
 describe('ValidationEngine', () => {

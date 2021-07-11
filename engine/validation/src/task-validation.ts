@@ -1,4 +1,4 @@
-import { TaskDto } from '@access/task'
+import { TaskDto } from '@utility/common/dtos'
 import { Result } from '@utility/common/result'
 import { TaskValidationErrorDto } from './types'
 

@@ -1,5 +1,6 @@
-import { ITaskAccess, TaskDto } from '@access/task'
+import { ITaskAccess } from '@access/task'
 import { IValidationEngine, TaskValidationErrorDto } from '@engine/validation'
+import { TaskDto } from '@utility/common/dtos'
 import { Result } from '@utility/common/result'
 import { AdministrationManager } from '../'
 

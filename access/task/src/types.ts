@@ -1,8 +1,4 @@
-export interface TaskDto {
-  id: string
-  text: string
-  done: boolean
-}
+import { TaskDto } from '@utility/common/dtos'
 
 export interface TaskQuery {
   id?: string

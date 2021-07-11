@@ -1,7 +1,8 @@
-import { ITaskAccess, TaskDto, TaskQuery } from './types'
+import { ITaskAccess, TaskQuery } from './types'
 import { Connection, Like } from '@access/common'
 import { Todo } from '@access/common/entity/todo'
 import { isNotNull } from '@utility/common/type-guards'
+import { TaskDto } from '@utility/common/dtos'
 
 export * from './types'
 

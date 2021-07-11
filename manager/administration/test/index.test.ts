@@ -1,6 +1,7 @@
 import { Connection, createConnection } from '@access/common'
-import { ITaskAccess, TaskAccess, TaskDto } from '@access/task'
+import { ITaskAccess, TaskAccess } from '@access/task'
 import { ValidationEngine } from '@engine/validation'
+import { TaskDto } from '@utility/common/dtos'
 import { AdministrationManager } from '../src'
 import { AddTaskDto, IAdministrationManager } from '../src/types'
 

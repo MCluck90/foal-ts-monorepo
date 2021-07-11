@@ -1,5 +1,6 @@
-import { TaskDto, TaskQuery } from '@access/task'
+import { TaskQuery } from '@access/task'
 import { TaskValidationErrorDto } from '@engine/validation'
+import { TaskDto } from '@utility/common/dtos'
 import { Result } from '@utility/common/result'
 
 export interface AddTaskDto {

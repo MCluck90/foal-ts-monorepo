@@ -12,8 +12,9 @@ import {
 import { TasksController } from '~/app/controllers/tasks.controller'
 import { AdministrationManager } from '@manager/administration'
 import { setupServiceManager } from '~/setup'
-import { TaskAccess, TaskDto } from '@access/task'
+import { TaskAccess } from '@access/task'
 import { Connection } from '@access/common'
+import { TaskDto } from '@utility/common/dtos'
 
 describe('TasksController', () => {
   let controller: TasksController

@@ -1,6 +1,7 @@
 import * as uuid from 'uuid'
-import { ITaskAccess, TaskDto, TaskQuery } from '@access/task'
+import { ITaskAccess, TaskQuery } from '@access/task'
 import { IValidationEngine, TaskValidationErrorDto } from '@engine/validation'
+import { TaskDto } from '@utility/common/dtos'
 import { Result } from '@utility/common/result'
 import {
   AddTaskDto,

@@ -1,7 +1,8 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm'
+import { TaskDto } from '@utility/common/dtos'
 
 @Entity()
-export class Todo {
+export class Todo implements TaskDto {
   @PrimaryColumn()
   id: string
 

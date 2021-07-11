@@ -73,10 +73,9 @@ for (const pkg of Object.values(packages)) {
 
   const { main, app, paths } = pkg.tsconfig
   if (
-    true ||
-    (references.length &&
-      commentJson.stringify(references) !==
-        commentJson.stringify(main.config.references))
+    references.length &&
+    commentJson.stringify(references) !==
+      commentJson.stringify(main.config.references)
   ) {
     main.config.references = references
     app.config.references = references

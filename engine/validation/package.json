@@ -20,7 +20,6 @@
   "prettier": "@config/prettier",
   "dependencies": {
     "@access/common": "*",
-    "@access/task": "*",
     "@utility/common": "*"
   },
   "devDependencies": {

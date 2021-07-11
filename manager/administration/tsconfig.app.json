@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "./src",
+    "baseUrl": "."
+  },
+  "include": ["types/*", "src/**/*", "test/**/*"],
+  "references": [
+    {
+      "path": "../../.config/prettier"
+    },
+    {
+      "path": "../../access/common"
+    },
+    {
+      "path": "../../access/task"
+    },
+    {
+      "path": "../../engine/validation"
+    },
+    {
+      "path": "../../utility/common"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "rootDir": "./src",
+    "baseUrl": "."
+  },
+  "include": ["types/*", "src/**/*", "test/**/*"],
+  "references": [
+    {
+      "path": "../../.config/prettier"
+    },
+    {
+      "path": "../../utility/common"
+    }
+  ]
+}

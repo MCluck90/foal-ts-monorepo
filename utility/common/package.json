@@ -9,12 +9,12 @@
   },
   "scripts": {
     "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.app.json",
     "rebuild": "yarn run clean && yarn run build",
-    "watch": "tsc -w",
+    "watch": "yarn build -w",
     "test": "jest --watch --roots src",
     "test:ci": "yarn test --watchAll=false --ci",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "yarn build --noEmit",
     "format": "prettier --write .",
     "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
   },

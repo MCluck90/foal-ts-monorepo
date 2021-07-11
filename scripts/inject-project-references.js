@@ -31,8 +31,10 @@ const packages = workspacePackages
     const packagePath = path.resolve(packageRoot, 'package.json')
 
     const tsconfigPath = path.resolve(packageRoot, 'tsconfig.json')
+    const tsconfigAppPath = path.resolve(packageRoot, 'tsconfig.app.json')
     const tsconfigPathsPath = path.resolve(packageRoot, 'tsconfig.paths.json')
     const mainTsConfig = getTsConfig(tsconfigPath)
+    const appTsConfig = getTsConfig(tsconfigAppPath, mainTsConfig)
     const pathsTsConfig = getTsConfig(tsconfigPathsPath, mainTsConfig)
 
     const package = require(packagePath)
@@ -43,6 +45,7 @@ const packages = workspacePackages
       dependencies: { ...package.dependencies, ...package.devDependencies },
       tsconfig: {
         main: mainTsConfig,
+        app: appTsConfig,
         paths: pathsTsConfig,
       },
     }
@@ -68,13 +71,15 @@ for (const pkg of Object.values(packages)) {
     }
   }
 
-  const { main, paths } = pkg.tsconfig
+  const { main, app, paths } = pkg.tsconfig
   if (
-    references.length &&
-    commentJson.stringify(references) !==
-      commentJson.stringify(main.config.references)
+    true ||
+    (references.length &&
+      commentJson.stringify(references) !==
+        commentJson.stringify(main.config.references))
   ) {
     main.config.references = references
+    app.config.references = references
     if (paths.config.compilerOptions) {
       paths.config.compilerOptions.paths =
         paths.config.compilerOptions.paths || {}
@@ -88,6 +93,9 @@ for (const pkg of Object.values(packages)) {
       }
     }
     fs.writeFileSync(main.path, commentJson.stringify(main.config, null, 2))
+    if (app !== main) {
+      fs.writeFileSync(app.path, commentJson.stringify(app.config, null, 2))
+    }
     if (paths !== main) {
       fs.writeFileSync(paths.path, commentJson.stringify(paths.config, null, 2))
     }

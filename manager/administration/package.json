@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
-    "build": "tsc -p tsconfig.app.json",
+    "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
     "watch": "yarn build -w",
     "test": "jest --watch",

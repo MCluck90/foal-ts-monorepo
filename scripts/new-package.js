@@ -103,7 +103,7 @@ async function main() {
     }
     prepushIfChanged[
       `${type}/${name}/**/*`
-    ] = `cd ${type}/${name} && yarn test:ci`
+    ] = `cd ${type}/${name} && yarn rebuild && yarn test:ci`
 
     // Remove any duplicates and sort
     workspacePackage.workspaces.packages = Array.from(

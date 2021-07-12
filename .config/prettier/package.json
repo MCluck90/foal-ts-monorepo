@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
+    "clean": "exit 0",
     "rebuild": "exit 0",
     "test": "exit 0",
     "test:unit": "exit 0",

@@ -4,7 +4,7 @@ export const initialState: State = {
   routes: {
     app: {
       server: {
-        tasks: [],
+        tasks: null,
       },
       local: {
         newTaskText: '',

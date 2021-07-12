@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
 import { Theme } from '~/theme'
 import { Task } from './task.component'
-import { TaskDto } from '@utility/common/dtos'
 
 const useStyles = createUseStyles({
   app: {
@@ -80,29 +79,21 @@ const CreateTodo: React.FC<CreateTodoProps> = ({ onSave }) => {
 
 export interface AppProps extends StateProps, DispatchProps {}
 
-export const App: React.FC<AppProps> = () => {
+export const App: React.FC<AppProps> = ({ tasks, fetchTasks }) => {
   const styles = useStyles()
-  const [tasks, setTasks] = useState<TaskDto[]>([])
-  async function getTasks() {
-    const response = await fetch('/tasks')
-    const result = await response.json()
-    if (Array.isArray(result)) {
-      setTasks(result)
-    }
+  if (tasks === null) {
+    fetchTasks()
   }
-  useEffect(() => {
-    getTasks()
-  })
 
   return (
     <div className={styles.app}>
       <header className={styles.header}>
         <img src={logo} className={styles.logo} alt="logo" />
         <h1>Todos</h1>
-        <CreateTodo onSave={() => getTasks()} />
+        <CreateTodo onSave={fetchTasks} />
         <div>
-          {tasks.map((task) => (
-            <Task key={task.id} {...task} onChange={() => getTasks()} />
+          {(tasks || []).map((task) => (
+            <Task key={task.id} {...task} onChange={fetchTasks} />
           ))}
         </div>
       </header>

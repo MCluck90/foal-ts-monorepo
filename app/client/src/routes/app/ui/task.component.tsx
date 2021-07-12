@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
-
-const useStyles = createUseStyles({})
 
 export interface TodoProps {
   id: string

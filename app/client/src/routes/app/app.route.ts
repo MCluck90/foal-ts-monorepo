@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { createMapStateToProps } from '~/common/lenses'
 import { newTaskTextLens, tasksLens } from './app.lenses'
+import { fetchTasks } from './effects'
 import { App as AppComponent } from './ui'
 
 const mapStateToProps = createMapStateToProps({
@@ -8,7 +9,9 @@ const mapStateToProps = createMapStateToProps({
   newTaskText: newTaskTextLens,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  fetchTasks,
+}
 
 export type StateProps = ReturnType<typeof mapStateToProps>
 export type DispatchProps = typeof mapDispatchToProps

@@ -9,6 +9,7 @@ import { all, SagaGenerator } from 'typed-redux-saga/macro'
 import { createReducer, updateState } from '@optiqs/optiqs'
 import { initialState } from './initial-state'
 import { State } from '~/types'
+import { routeSagas } from '~/routes/effects'
 
 export const configureStore = <S>(
   reducer: Reducer<S>,
@@ -38,7 +39,9 @@ export const configureStore = <S>(
 
 export type Store = ReturnType<typeof configureStore>
 
-const allSagas = {}
+const allSagas = {
+  routeSagas,
+}
 
 function* rootSaga() {
   yield all(allSagas)

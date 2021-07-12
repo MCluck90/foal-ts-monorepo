@@ -5,14 +5,20 @@ import { App } from './routes/app'
 import reportWebVitals from './report-web-vitals'
 import { defaultStyleSheet } from './theme'
 import { hasOwnProperty } from '@utility/common/object'
+import { Provider } from 'react-redux'
+import { createStore } from './store/store'
 
 if (hasOwnProperty(document, 'head')) {
   document.head.appendChild(defaultStyleSheet)
 }
 
+let store = createStore()
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )

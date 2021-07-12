@@ -29,9 +29,6 @@
       "path": "../../access/common"
     },
     {
-      "path": "../../access/task"
-    },
-    {
       "path": "../../utility/common"
     }
   ]

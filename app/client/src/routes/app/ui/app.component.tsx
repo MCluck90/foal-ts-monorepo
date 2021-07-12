@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
+import type { DispatchProps, StateProps } from '../app.route'
 import { Theme } from '~/theme'
 import { Task } from './task.component'
+import { TaskDto } from '@utility/common/dtos'
 
 const useStyles = createUseStyles({
   app: {
@@ -41,13 +43,6 @@ const useStyles = createUseStyles({
   },
 })
 
-// TODO: Share this type between the frontend and backend
-interface TaskDto {
-  id: string
-  text: string
-  done: boolean
-}
-
 interface CreateTodoProps {
   onSave?: () => void
 }
@@ -83,7 +78,9 @@ const CreateTodo: React.FC<CreateTodoProps> = ({ onSave }) => {
   )
 }
 
-export function App() {
+export interface AppProps extends StateProps, DispatchProps {}
+
+export const App: React.FC<AppProps> = () => {
   const styles = useStyles()
   const [tasks, setTasks] = useState<TaskDto[]>([])
   async function getTasks() {

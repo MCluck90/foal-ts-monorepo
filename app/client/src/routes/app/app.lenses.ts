@@ -8,3 +8,5 @@ export const tasksLens = pipe(serverLens, lens.prop('tasks'))
 
 const localLens = pipe(appRouteLens, lens.prop('local'))
 export const newTaskTextLens = pipe(localLens, lens.prop('newTaskText'))
+export const errorLens = pipe(localLens, lens.prop('error'))
+export const loadingLens = pipe(localLens, lens.prop('loading'))

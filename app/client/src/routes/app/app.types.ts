@@ -7,5 +7,7 @@ export type AppRouteState = RouteState<{
   }
   local: {
     newTaskText: string
+    error?: string
+    loading?: boolean
   }
 }>

@@ -1,12 +1,19 @@
 import { connect } from 'react-redux'
 import { createMapStateToProps } from '~/common/lenses'
-import { newTaskTextLens, tasksLens } from './app.lenses'
+import {
+  errorLens,
+  loadingLens,
+  newTaskTextLens,
+  tasksLens,
+} from './app.lenses'
 import { fetchTasks } from './effects'
 import { App as AppComponent } from './ui'
 
 const mapStateToProps = createMapStateToProps({
   tasks: tasksLens,
   newTaskText: newTaskTextLens,
+  loading: loadingLens,
+  error: errorLens,
 })
 
 const mapDispatchToProps = {

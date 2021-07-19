@@ -79,9 +79,32 @@ const CreateTodo: React.FC<CreateTodoProps> = ({ onSave }) => {
 
 export interface AppProps extends StateProps, DispatchProps {}
 
-export const App: React.FC<AppProps> = ({ tasks, fetchTasks }) => {
+interface ErrorProps {
+  error?: string
+  onTryAgain?: () => unknown
+}
+
+const Error: React.FC<ErrorProps> = ({ error, onTryAgain }) => {
+  if (!error) {
+    return null
+  }
+
+  return (
+    <div>
+      <span>There was an error: {error}</span>
+      <button onClick={onTryAgain}>Try again</button>
+    </div>
+  )
+}
+
+export const App: React.FC<AppProps> = ({
+  tasks,
+  fetchTasks,
+  loading,
+  error,
+}) => {
   const styles = useStyles()
-  if (tasks === null) {
+  if (tasks === null && !loading && !error) {
     fetchTasks()
   }
 
@@ -90,12 +113,19 @@ export const App: React.FC<AppProps> = ({ tasks, fetchTasks }) => {
       <header className={styles.header}>
         <img src={logo} className={styles.logo} alt="logo" />
         <h1>Todos</h1>
-        <CreateTodo onSave={fetchTasks} />
-        <div>
-          {(tasks || []).map((task) => (
-            <Task key={task.id} {...task} onChange={fetchTasks} />
-          ))}
-        </div>
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <>
+            <CreateTodo onSave={fetchTasks} />
+            <Error error={error} onTryAgain={fetchTasks} />
+            <div>
+              {(tasks || []).map((task) => (
+                <Task key={task.id} {...task} onChange={fetchTasks} />
+              ))}
+            </div>
+          </>
+        )}
       </header>
     </div>
   )

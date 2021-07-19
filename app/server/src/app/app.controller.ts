@@ -1,4 +1,10 @@
-import { controller, IAppController } from '@foal/core'
+import {
+  Context,
+  controller,
+  HttpResponse,
+  HttpResponseInternalServerError,
+  IAppController,
+} from '@foal/core'
 
 import { ApiController, TasksController } from './controllers'
 
@@ -9,4 +15,17 @@ export class AppController implements IAppController {
   ]
 
   async init() {}
+
+  handleError?(
+    error: Error,
+    ctx: Context,
+  ): HttpResponse | Promise<HttpResponse> {
+    return new HttpResponseInternalServerError(
+      { error: error.message },
+      {
+        error,
+        ctx,
+      },
+    )
+  }
 }

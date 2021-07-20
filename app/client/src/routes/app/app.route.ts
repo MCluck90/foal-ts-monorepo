@@ -7,7 +7,7 @@ import {
   newTaskTextLens,
   tasksLens,
 } from './app.lenses'
-import { fetchTasks } from './effects'
+import { createTask, fetchTasks } from './effects'
 import { App as AppComponent } from './ui'
 
 const mapStateToProps = createMapStateToProps({
@@ -20,6 +20,7 @@ const mapStateToProps = createMapStateToProps({
 
 const mapDispatchToProps = {
   fetchTasks,
+  createTask,
 }
 
 export type StateProps = ReturnType<typeof mapStateToProps>

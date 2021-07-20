@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
 import { Theme } from '~/theme'
 import { Task } from './task.component'
+import { CreateTodo } from './create-todo.component'
+import { Error } from './error.component'
 
 const useStyles = createUseStyles({
   app: {
@@ -42,63 +44,11 @@ const useStyles = createUseStyles({
   },
 })
 
-interface CreateTodoProps {
-  onSave?: () => void
-}
-
-const CreateTodo: React.FC<CreateTodoProps> = ({ onSave }) => {
-  const [text, setText] = useState('')
-  const onClick = () => {
-    fetch('/tasks', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ text }),
-    })
-      .then(() => {
-        setText('')
-        onSave?.()
-      })
-      .catch((err) => console.error(err))
-  }
-
-  return (
-    <div>
-      <input
-        type="input"
-        value={text}
-        onChange={(evt) => setText(evt.currentTarget.value)}
-        onKeyDown={(evt) => (evt.key === 'Enter' ? onClick() : null)}
-      />
-      <button onClick={onClick}>Save</button>
-    </div>
-  )
-}
-
 export interface AppProps extends StateProps, DispatchProps {}
-
-interface ErrorProps {
-  error?: string
-  onTryAgain?: () => unknown
-}
-
-const Error: React.FC<ErrorProps> = ({ error, onTryAgain }) => {
-  if (!error) {
-    return null
-  }
-
-  return (
-    <div>
-      <span>There was an error: {error}</span>
-      <button onClick={onTryAgain}>Try again</button>
-    </div>
-  )
-}
 
 export const App: React.FC<AppProps> = ({
   tasks,
+  createTask,
   fetchTasks,
   loading,
   error,
@@ -118,7 +68,7 @@ export const App: React.FC<AppProps> = ({
           <span>Loading...</span>
         ) : (
           <>
-            <CreateTodo onSave={fetchTasks} />
+            <CreateTodo onSave={createTask} />
             <Error error={error} onTryAgain={fetchTasks} />
             <div>
               {(tasks || []).map((task) => (

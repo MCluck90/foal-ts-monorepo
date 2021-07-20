@@ -50,6 +50,8 @@ export const App: React.FC<AppProps> = ({
   tasks,
   createTask,
   fetchTasks,
+  removeTask,
+  updateTask,
   loading,
   error,
   isInitialized,
@@ -72,7 +74,12 @@ export const App: React.FC<AppProps> = ({
             <Error error={error} onTryAgain={fetchTasks} />
             <div>
               {(tasks || []).map((task) => (
-                <Task key={task.id} {...task} onChange={fetchTasks} />
+                <Task
+                  key={task.id}
+                  {...task}
+                  onChange={updateTask}
+                  onRemove={removeTask}
+                />
               ))}
             </div>
           </>

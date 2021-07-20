@@ -1,38 +1,33 @@
+import { TaskDto } from '@utility/common/dtos'
 import React, { useState } from 'react'
 
 export interface TodoProps {
   id: string
   text: string
   done: boolean
-  onChange?: () => void
+  onChange?: (task: TaskDto) => void
+  onRemove?: (id: string) => void
 }
 
-export const Task: React.FC<TodoProps> = ({ id, text, done, onChange }) => {
+export const Task: React.FC<TodoProps> = ({
+  id,
+  text,
+  done,
+  onChange,
+  onRemove,
+}) => {
   const [isChecked, setIsChecked] = useState(done)
   const onCheck = (checked: boolean) => {
     setIsChecked(checked)
-    fetch('/tasks', {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id, done: checked }),
+    onChange?.({
+      id,
+      text,
+      done: checked,
     })
-    onChange?.()
   }
 
-  const onRemove = async () => {
-    await fetch('/tasks', {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id }),
-    })
-
-    onChange?.()
+  const onClickRemove = () => {
+    onRemove?.(id)
   }
   return (
     <div>
@@ -42,7 +37,7 @@ export const Task: React.FC<TodoProps> = ({ id, text, done, onChange }) => {
         onChange={(evt) => onCheck(evt.currentTarget.checked)}
       />
       <span>{text}</span>
-      <button onClick={onRemove}>Remove</button>
+      <button onClick={onClickRemove}>Remove</button>
     </div>
   )
 }

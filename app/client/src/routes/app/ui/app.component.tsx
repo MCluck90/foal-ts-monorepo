@@ -3,10 +3,8 @@ import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
 import { Theme } from '~/theme'
-import { Task } from './task.component'
-import { CreateTodo } from './create-todo.component'
-import { Error } from './error.component'
-import { ThemePicker } from './theme-picker.component'
+import { TaskList } from './task-list'
+import { ThemeChanger } from './theme-changer'
 
 const useStyles = createUseStyles({
   app: {
@@ -72,27 +70,16 @@ export const App: React.FC<AppProps> = ({
         {loading ? (
           <span>Loading...</span>
         ) : (
-          <>
-            <CreateTodo onSave={createTask} />
-            <Error error={error} onTryAgain={fetchTasks} />
-            <div>
-              {(tasks || []).map((task) => (
-                <Task
-                  key={task.id}
-                  {...task}
-                  onChange={updateTask}
-                  onRemove={removeTask}
-                />
-              ))}
-            </div>
-            <div>
-              <ThemePicker themeKey={Theme.BackgroundColor} />
-              <ThemePicker themeKey={Theme.PrimaryFont} />
-              <ThemePicker themeKey={Theme.TextColor} />
-              <ThemePicker themeKey={Theme.HeaderTextColor} />
-            </div>
-          </>
+          <TaskList
+            error={error}
+            tasks={tasks}
+            createTask={createTask}
+            fetchTasks={fetchTasks}
+            removeTask={removeTask}
+            updateTask={updateTask}
+          />
         )}
+        <ThemeChanger />
       </main>
     </div>
   )

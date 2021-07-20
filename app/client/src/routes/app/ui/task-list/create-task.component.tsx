@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-export interface CreateTodoProps {
+export interface CreateTaskProps {
   onSave?: (text: string) => void
 }
 
-export const CreateTodo: React.FC<CreateTodoProps> = ({ onSave }) => {
+export const CreateTask: React.FC<CreateTaskProps> = ({ onSave }) => {
   const [text, setText] = useState('')
 
   const saveTodo = () => onSave?.(text)

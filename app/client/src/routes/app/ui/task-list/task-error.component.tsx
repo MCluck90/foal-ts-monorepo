@@ -1,11 +1,11 @@
 import React from 'react'
 
-export interface ErrorProps {
+export interface TaskErrorProps {
   error?: string
   onTryAgain?: () => unknown
 }
 
-export const Error: React.FC<ErrorProps> = ({ error, onTryAgain }) => {
+export const TaskError: React.FC<TaskErrorProps> = ({ error, onTryAgain }) => {
   if (!error) {
     return null
   }

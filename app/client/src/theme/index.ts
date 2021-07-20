@@ -108,6 +108,11 @@ export const resetThemeValue = (themeKey: Theme) => {
 }
 
 /**
+ * Get all of the available theme keys
+ */
+export const getThemeKeys = (): Theme[] => Array.from(defaultValues.keys())
+
+/**
  * Apply theme from storage
  */
 const loadTheme = () => {

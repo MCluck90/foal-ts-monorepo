@@ -12,6 +12,7 @@ import {
   Put,
   ValidateBody,
 } from '@foal/core'
+import { TasksApiGetResponse } from '@utility/common/types/api/tasks.api'
 import { AdministrationManager } from '@manager/administration'
 
 interface PostBody {
@@ -31,7 +32,8 @@ export class TasksController {
   @Get('/')
   async getTasks(ctx: Context) {
     const tasks = await this.administrationManager.findTasks()
-    return new HttpResponseOK(tasks)
+    const response: TasksApiGetResponse = { tasks }
+    return new HttpResponseOK(response)
   }
 
   @Post('/')

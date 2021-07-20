@@ -1,13 +1,12 @@
-import { TaskDto } from '@utility/common/dtos'
+import { TasksApiGetResponse } from '@utility/common/types/api/tasks.api'
 import { RouteState } from '~/types'
 
 export type AppRouteState = RouteState<{
-  server: {
-    tasks: TaskDto[] | null
-  }
+  server: TasksApiGetResponse
   local: {
     newTaskText: string
     error?: string
     loading?: boolean
+    isInitialized: boolean
   }
 }>

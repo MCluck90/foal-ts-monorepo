@@ -102,9 +102,10 @@ export const App: React.FC<AppProps> = ({
   fetchTasks,
   loading,
   error,
+  isInitialized,
 }) => {
   const styles = useStyles()
-  if (tasks === null && !loading && !error) {
+  if (!isInitialized) {
     fetchTasks()
   }
 

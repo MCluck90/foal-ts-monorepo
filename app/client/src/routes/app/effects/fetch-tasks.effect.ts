@@ -1,38 +1,23 @@
 import { updateState } from '@optiqs/optiqs'
-import { TaskDto } from '@utility/common/dtos'
-import { Result } from '@utility/common/result'
 import { flow } from 'fp-ts/lib/function'
-import { call, put, select, takeLatest } from 'typed-redux-saga/macro'
+import { put, select, takeLatest } from 'typed-redux-saga/macro'
 import { createAction } from '~/common/actions'
-import { errorLens, loadingLens, tasksLens } from '../app.lenses'
+import { appApi } from '../app.api'
+import {
+  errorLens,
+  isInitializedLens,
+  loadingLens,
+  serverLens,
+  tasksLens,
+} from '../app.lenses'
 
 export const fetchTasks = createAction('APP/FETCH_TASKS')
 
-const getTasks = () =>
-  fetch('/tasks')
-    .then((resp) => resp.json())
-    .then((response) => {
-      if (response.error) {
-        throw response.error
-      }
-
-      return response
-    })
-
-const tasksApi = {
-  get: function* (): Generator<unknown, Result<TaskDto[], string>> {
-    try {
-      const tasks: TaskDto[] = yield* call(getTasks)
-      return Result.Ok(tasks)
-    } catch (error) {
-      return Result.Err(error)
-    }
-  },
-}
-
 export const fetchTasksSaga = takeLatest(fetchTasks, function* () {
-  const runningSaga = tasksApi.get()
-  yield* put(updateState(loadingLens.set(true)))
+  const runningSaga = appApi.get()
+  yield* put(
+    updateState(flow(loadingLens.set(true), isInitializedLens.set(true))),
+  )
 
   const result = yield* runningSaga
   if (result.isOk()) {
@@ -40,7 +25,7 @@ export const fetchTasksSaga = takeLatest(fetchTasks, function* () {
       updateState(
         flow(
           loadingLens.set(false),
-          tasksLens.set(result.unwrap()),
+          serverLens.set(result.unwrap()),
           errorLens.set(undefined),
         ),
       ),

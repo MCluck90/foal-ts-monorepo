@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { createMapStateToProps } from '~/common/lenses'
 import {
   errorLens,
+  isInitializedLens,
   loadingLens,
   newTaskTextLens,
   tasksLens,
@@ -14,6 +15,7 @@ const mapStateToProps = createMapStateToProps({
   newTaskText: newTaskTextLens,
   loading: loadingLens,
   error: errorLens,
+  isInitialized: isInitializedLens,
 })
 
 const mapDispatchToProps = {

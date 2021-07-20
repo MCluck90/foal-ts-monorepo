@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import { App } from './routes/app'
 import reportWebVitals from './report-web-vitals'
-import { defaultStyleSheet } from './theme'
+import { initializeTheme } from './theme'
 import { hasOwnProperty } from '@utility/common/object'
 import { Provider } from 'react-redux'
-import { createStore } from './store/store'
+import { createStore } from './store'
 
 if (hasOwnProperty(document, 'head')) {
-  document.head.appendChild(defaultStyleSheet)
+  initializeTheme()
 }
 
 let store = createStore()

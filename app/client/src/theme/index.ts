@@ -5,6 +5,7 @@ export enum Theme {
   BackgroundColor = 'var(--app-background-color)',
   PrimaryFont = 'var(--app-primary-font)',
   TextColor = 'var(--app-text-color)',
+  HeaderTextColor = 'var(--app-header-text-color)',
 }
 
 const storageKey = '--app-theme'
@@ -14,9 +15,10 @@ const isTheme = (str: string): str is Theme =>
 
 // Done in a record to guarantee that all values are captured
 const defaultValuesRecord: Record<Theme, string> = {
-  [Theme.BackgroundColor]: '#222',
+  [Theme.BackgroundColor]: '#222222',
   [Theme.PrimaryFont]: 'Arial, Helvetica, sans-serif',
-  [Theme.TextColor]: '#eee',
+  [Theme.TextColor]: '#eeeeee',
+  [Theme.HeaderTextColor]: '#ffffff',
 }
 
 const defaultValues: Map<Theme, string> = new Map(
@@ -76,6 +78,12 @@ const saveThemeToStorage = (theme: Map<Theme, string>) => {
 }
 
 /**
+ * Get the value for a part of the theme
+ */
+export const getThemeValue = (themeKey: Theme): string =>
+  document.body.style.getPropertyValue(keyToPropertyName(themeKey))
+
+/**
  * Set the value for a part of the theme
  */
 export const setThemeValue = (themeKey: Theme, value: string) => {
@@ -91,18 +99,61 @@ export const setThemeValue = (themeKey: Theme, value: string) => {
 }
 
 /**
+ * Reset theme value to default value
+ */
+export const resetThemeValue = (themeKey: Theme) => {
+  const value = defaultValuesRecord[themeKey]
+  setThemeValue(themeKey, value)
+  return value
+}
+
+/**
  * Apply theme from storage
  */
 const loadTheme = () => {
-  const theme = getThemeFromStorage()
+  let theme = getThemeFromStorage()
   if (!theme) {
     saveThemeToStorage(defaultValues)
-    return
+    theme = getThemeFromStorage()
+    if (!theme) {
+      throw new Error('Failed to load theme from storage')
+    }
+  }
+
+  // Save any missing values
+  const themeKeys = Object.keys(theme)
+  const missingKeys = Object.keys(Theme).filter(
+    (key) => !themeKeys.includes(key),
+  ) as Theme[]
+  for (const key of missingKeys) {
+    setThemeValue(key, defaultValuesRecord[key])
+  }
+  if (missingKeys.length) {
+    theme = getThemeFromStorage()
+    if (!theme) {
+      throw new Error('Failed to load theme from storage')
+    }
   }
 
   for (const [key, value] of Array.from(theme.entries())) {
     setThemeValue(key, value)
   }
+}
+
+/**
+ * Get the name of a theme value
+ */
+export const themeKeyToName = (theme: Theme): string | null => {
+  const entries = Object.entries(Theme)
+  const index = entries.findIndex(([_key, value]) => value === theme)
+  if (index >= 0) {
+    const titlecaseName = entries[index][0]
+    return titlecaseName.replace(/([a-z][A-Z])/g, (match) => {
+      const [end, start] = match
+      return `${end} ${start.toLocaleLowerCase()}`
+    })
+  }
+  return null
 }
 
 /**

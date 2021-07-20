@@ -6,6 +6,7 @@ import { Theme } from '~/theme'
 import { Task } from './task.component'
 import { CreateTodo } from './create-todo.component'
 import { Error } from './error.component'
+import { ThemePicker } from './theme-picker.component'
 
 const useStyles = createUseStyles({
   app: {
@@ -15,7 +16,7 @@ const useStyles = createUseStyles({
     height: '40vmin',
     pointerEvents: 'none',
   },
-  header: {
+  main: {
     backgroundColor: Theme.BackgroundColor,
     minHeight: '100vh',
     display: 'flex',
@@ -23,7 +24,9 @@ const useStyles = createUseStyles({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-    color: Theme.TextColor,
+  },
+  header: {
+    color: Theme.HeaderTextColor,
   },
   link: {
     color: '#61dafb',
@@ -63,9 +66,9 @@ export const App: React.FC<AppProps> = ({
 
   return (
     <div className={styles.app}>
-      <header className={styles.header}>
+      <main className={styles.main}>
         <img src={logo} className={styles.logo} alt="logo" />
-        <h1>Todos</h1>
+        <h1 className={styles.header}>Todos</h1>
         {loading ? (
           <span>Loading...</span>
         ) : (
@@ -82,9 +85,15 @@ export const App: React.FC<AppProps> = ({
                 />
               ))}
             </div>
+            <div>
+              <ThemePicker themeKey={Theme.BackgroundColor} />
+              <ThemePicker themeKey={Theme.PrimaryFont} />
+              <ThemePicker themeKey={Theme.TextColor} />
+              <ThemePicker themeKey={Theme.HeaderTextColor} />
+            </div>
           </>
         )}
-      </header>
+      </main>
     </div>
   )
 }

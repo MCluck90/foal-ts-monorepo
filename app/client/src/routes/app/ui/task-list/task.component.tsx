@@ -30,7 +30,7 @@ export const Task: React.FC<TodoProps> = ({
     onRemove?.(id)
   }
   return (
-    <div>
+    <>
       <input
         type="checkbox"
         checked={isChecked}
@@ -38,6 +38,6 @@ export const Task: React.FC<TodoProps> = ({
       />
       <span>{text}</span>
       <button onClick={onClickRemove}>Remove</button>
-    </div>
+    </>
   )
 }

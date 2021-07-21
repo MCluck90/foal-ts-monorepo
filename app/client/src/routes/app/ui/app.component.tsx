@@ -8,7 +8,7 @@ import { Navigation } from '~/common/components'
 
 const useStyles = createUseStyles({
   logo: {
-    height: '40vmin',
+    height: '20vmin',
     pointerEvents: 'none',
   },
   main: {

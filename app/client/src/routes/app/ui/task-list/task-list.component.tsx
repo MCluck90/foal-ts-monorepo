@@ -1,5 +1,6 @@
 import { TaskDto } from '@utility/common/dtos'
 import React from 'react'
+import { createUseStyles } from 'react-jss'
 import { CreateTask } from './create-task.component'
 import { TaskError } from './task-error.component'
 import { Task } from './task.component'
@@ -13,6 +14,19 @@ export interface TaskListProps {
   updateTask: (task: TaskDto) => void
 }
 
+const useStyles = createUseStyles({
+  tasks: {
+    marginTop: '1em',
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr auto',
+    columnGap: '0.5em',
+    textAlign: 'left',
+    '& input': {
+      marginTop: 8,
+    },
+  },
+})
+
 export const TaskList: React.FC<TaskListProps> = ({
   error,
   tasks,
@@ -20,19 +34,22 @@ export const TaskList: React.FC<TaskListProps> = ({
   fetchTasks,
   removeTask,
   updateTask,
-}) => (
-  <div>
-    <CreateTask onSave={createTask} />
-    <TaskError error={error} onTryAgain={fetchTasks} />
+}) => {
+  const styles = useStyles()
+  return (
     <div>
-      {(tasks || []).map((task) => (
-        <Task
-          key={task.id}
-          {...task}
-          onChange={updateTask}
-          onRemove={removeTask}
-        />
-      ))}
+      <CreateTask onSave={createTask} />
+      <TaskError error={error} onTryAgain={fetchTasks} />
+      <div className={styles.tasks}>
+        {(tasks || []).map((task) => (
+          <Task
+            key={task.id}
+            {...task}
+            onChange={updateTask}
+            onRemove={removeTask}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { createUseStyles } from 'react-jss'
 import {
   themeKeyToName,
   getThemeValue,
@@ -19,9 +20,22 @@ const themeValueToInputType: Record<Theme, 'color' | 'text'> = {
   [Theme.TextColor]: 'color',
 }
 
+const useStyles = createUseStyles({
+  colorInput: {
+    background: 'transparent',
+    border: 'none',
+    height: 30,
+    marginLeft: -4,
+  },
+})
+
 export const ThemePicker: React.FC<ThemePickerProps> = ({ themeKey }) => {
-  const name = themeKeyToName(themeKey)
+  const styles = useStyles()
   const [value, setValue] = useState(getThemeValue(themeKey))
+
+  const name = themeKeyToName(themeKey)
+  const type = themeValueToInputType[themeKey]
+
   const onInput: React.FormEventHandler<HTMLInputElement> = (event) => {
     const newValue = event.currentTarget.value
     setValue(newValue)
@@ -30,13 +44,15 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({ themeKey }) => {
   const onReset = () => {
     setValue(resetThemeValue(themeKey))
   }
+
   return (
     <>
       <label>{name}</label>
       <input
-        type={themeValueToInputType[themeKey]}
+        type={type}
         value={value}
         onInput={onInput}
+        className={type === 'color' ? styles.colorInput : undefined}
       />
       <button onClick={onReset}>Reset</button>
     </>

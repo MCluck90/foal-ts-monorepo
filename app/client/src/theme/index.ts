@@ -3,9 +3,10 @@
  */
 export enum Theme {
   BackgroundColor = 'var(--app-background-color)',
+  HeaderTextColor = 'var(--app-header-text-color)',
+  NavigationBackgroundColor = 'var(--app-navigation-background-color)',
   PrimaryFont = 'var(--app-primary-font)',
   TextColor = 'var(--app-text-color)',
-  HeaderTextColor = 'var(--app-header-text-color)',
 }
 
 const storageKey = '--app-theme'
@@ -16,9 +17,10 @@ const isTheme = (str: string): str is Theme =>
 // Done in a record to guarantee that all values are captured
 const defaultValuesRecord: Record<Theme, string> = {
   [Theme.BackgroundColor]: '#222222',
+  [Theme.HeaderTextColor]: '#ffffff',
+  [Theme.NavigationBackgroundColor]: '#1c1c1c',
   [Theme.PrimaryFont]: 'Arial, Helvetica, sans-serif',
   [Theme.TextColor]: '#eeeeee',
-  [Theme.HeaderTextColor]: '#ffffff',
 }
 
 const defaultValues: Map<Theme, string> = new Map(

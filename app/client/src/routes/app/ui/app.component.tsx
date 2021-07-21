@@ -3,8 +3,8 @@ import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
 import { TaskList } from './task-list'
-import { Link } from 'react-router-dom'
 import { mergeClasses, useRouteStyles } from '~/common/styles'
+import { Navigation } from '~/common/components'
 
 const useStyles = createUseStyles({
   logo: {
@@ -17,9 +17,6 @@ const useStyles = createUseStyles({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-  },
-  link: {
-    color: '#61dafb',
   },
 
   '@keyframes logoSpin': {
@@ -56,9 +53,7 @@ export const App: React.FC<AppProps> = ({
 
   return (
     <div className={styles.root}>
-      <Link to="/theme" className={styles.link}>
-        Change Theme
-      </Link>
+      <Navigation />
       <main className={styles.main}>
         <img src={logo} className={styles.logo} alt="logo" />
         <h1 className={styles.header}>Todos</h1>

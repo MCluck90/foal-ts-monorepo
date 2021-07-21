@@ -13,9 +13,10 @@ export interface ThemePickerProps {
 
 const themeValueToInputType: Record<Theme, 'color' | 'text'> = {
   [Theme.BackgroundColor]: 'color',
+  [Theme.HeaderTextColor]: 'color',
+  [Theme.NavigationBackgroundColor]: 'color',
   [Theme.PrimaryFont]: 'text',
   [Theme.TextColor]: 'color',
-  [Theme.HeaderTextColor]: 'color',
 }
 
 export const ThemePicker: React.FC<ThemePickerProps> = ({ themeKey }) => {

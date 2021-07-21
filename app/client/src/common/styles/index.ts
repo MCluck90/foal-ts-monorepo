@@ -11,7 +11,7 @@ export function mergeClasses<T extends any[]>(...objects: T) {
   return allClasses.reduce((result, className) => {
     result[className] = objects.reduce((combinedClassName, obj = {}) => {
       const objClassName = obj[className] ? `${obj[className]}` : ''
-      return `${combinedClassName}${objClassName}`.replace(/\s+/g, ' ').trim()
+      return `${combinedClassName} ${objClassName}`.replace(/\s+/g, ' ').trim()
     }, '')
     return result
   }, {} as Record<string, string>)

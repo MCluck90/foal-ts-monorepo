@@ -5,7 +5,19 @@ import { mergeClasses, useRouteStyles } from '~/common/styles'
 import { getThemeKeys } from '~/theme'
 import { ThemePicker } from './theme-picker'
 
-const useStyles = createUseStyles({})
+const useStyles = createUseStyles({
+  main: {
+    maxWidth: '80vw',
+    textAlign: 'center',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr auto',
+    columnGap: '1em',
+    rowGap: '0.5em',
+    '& label': {
+      textAlign: 'left',
+    },
+  },
+})
 
 export const ThemeComponent: React.FC<{}> = () => {
   const styles = mergeClasses(useRouteStyles(), useStyles())

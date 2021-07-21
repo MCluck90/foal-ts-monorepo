@@ -12,6 +12,8 @@ export const useRouteStyles = createUseStyles({
   },
   main: {
     display: 'flex',
+    maxWidth: '80vw',
+    margin: '0 auto',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',

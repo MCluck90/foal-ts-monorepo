@@ -31,7 +31,7 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({ themeKey }) => {
     setValue(resetThemeValue(themeKey))
   }
   return (
-    <div>
+    <>
       <label>{name}</label>
       <input
         type={themeValueToInputType[themeKey]}
@@ -39,6 +39,6 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({ themeKey }) => {
         onInput={onInput}
       />
       <button onClick={onReset}>Reset</button>
-    </div>
+    </>
   )
 }

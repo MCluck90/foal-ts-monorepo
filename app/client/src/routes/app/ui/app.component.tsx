@@ -2,29 +2,21 @@ import React from 'react'
 import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
-import { Theme } from '~/theme'
 import { TaskList } from './task-list'
-import { ThemeChanger } from './theme-changer'
+import { Link } from 'react-router-dom'
+import { mergeClasses, useRouteStyles } from '~/common/styles'
 
 const useStyles = createUseStyles({
-  app: {
-    textAlign: 'center',
-  },
   logo: {
     height: '40vmin',
     pointerEvents: 'none',
   },
   main: {
-    backgroundColor: Theme.BackgroundColor,
-    minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-  },
-  header: {
-    color: Theme.HeaderTextColor,
   },
   link: {
     color: '#61dafb',
@@ -57,13 +49,16 @@ export const App: React.FC<AppProps> = ({
   error,
   isInitialized,
 }) => {
-  const styles = useStyles()
+  const styles = mergeClasses(useRouteStyles(), useStyles())
   if (!isInitialized) {
     fetchTasks()
   }
 
   return (
-    <div className={styles.app}>
+    <div className={styles.root}>
+      <Link to="/theme" className={styles.link}>
+        Change Theme
+      </Link>
       <main className={styles.main}>
         <img src={logo} className={styles.logo} alt="logo" />
         <h1 className={styles.header}>Todos</h1>
@@ -79,7 +74,6 @@ export const App: React.FC<AppProps> = ({
             updateTask={updateTask}
           />
         )}
-        <ThemeChanger />
       </main>
     </div>
   )

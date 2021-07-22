@@ -1,5 +1,5 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
+import { createStyles } from '~/common/styles'
 import { Theme } from '~/theme'
 
 export interface ColorPickerProps {
@@ -13,7 +13,7 @@ const toFullRGB = (color: string = '#000') =>
     ? `#${color[1].repeat(2)}${color[2].repeat(2)}${color[3].repeat(2)}`
     : color
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   container: {
     display: 'flex',
     fontFamily: Theme.PrimaryFont,

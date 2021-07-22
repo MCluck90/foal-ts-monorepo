@@ -1,10 +1,10 @@
-import { createUseStyles } from 'react-jss'
 import { Theme } from '~/theme'
+import { createStyles } from './util.styles'
 
 /**
  * Styles shared between all routes
  */
-export const useRouteStyles = createUseStyles({
+export const useRouteStyles = createStyles({
   root: {
     backgroundColor: Theme.BackgroundColor,
     textAlign: 'center',

@@ -1,11 +1,10 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
 import { Navigation } from '~/common/components'
-import { mergeClasses, useRouteStyles } from '~/common/styles'
+import { createStyles, mergeClasses, useRouteStyles } from '~/common/styles'
 import { getThemeKeys } from '~/theme'
 import { ThemePicker } from './theme-picker'
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   main: {
     maxWidth: '80vw',
     textAlign: 'center',

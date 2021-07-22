@@ -1,12 +1,11 @@
 import React from 'react'
-import { createUseStyles } from 'react-jss'
 import logo from '~/assets/logo.svg'
 import type { DispatchProps, StateProps } from '../app.route'
 import { TaskList } from './task-list'
-import { mergeClasses, useRouteStyles } from '~/common/styles'
+import { createStyles, mergeClasses, useRouteStyles } from '~/common/styles'
 import { Navigation } from '~/common/components'
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   logo: {
     height: '20vmin',
     pointerEvents: 'none',

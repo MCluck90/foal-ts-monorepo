@@ -1,6 +1,6 @@
 import { TaskDto } from '@utility/common/dtos'
 import React from 'react'
-import { createUseStyles } from 'react-jss'
+import { createStyles } from '~/common/styles'
 import { CreateTask } from './create-task.component'
 import { TaskError } from './task-error.component'
 import { Task } from './task.component'
@@ -14,7 +14,7 @@ export interface TaskListProps {
   updateTask: (task: TaskDto) => void
 }
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   tasks: {
     marginTop: '1em',
     display: 'grid',

@@ -1,8 +1,8 @@
-import { createUseStyles } from 'react-jss'
 import { NavLink } from 'react-router-dom'
+import { createStyles } from '~/common/styles'
 import { Theme } from '~/theme'
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   root: {
     display: 'flex',
     backgroundColor: Theme.NavigationBackgroundColor,

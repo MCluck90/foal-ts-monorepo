@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createUseStyles } from 'react-jss'
+import { createStyles } from '~/common/styles'
 import {
   themeKeyToName,
   getThemeValue,
@@ -20,7 +20,7 @@ const themeValueToInputType: Record<Theme, 'color' | 'text'> = {
   [Theme.TextColor]: 'color',
 }
 
-const useStyles = createUseStyles({
+const useStyles = createStyles({
   colorInput: {
     background: 'transparent',
     border: 'none',

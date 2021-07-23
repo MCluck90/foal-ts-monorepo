@@ -11,6 +11,7 @@
     "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
     "watch": "yarn build -w",
+    "lint": "eslint \"src/**\" \"test/**\" \"types/**\"",
     "test": "jest --watch",
     "test:unit": "yarn test --testPathPattern=src",
     "test:integration": "yarn test --testPathPattern=test",
@@ -18,6 +19,9 @@
     "typecheck": "yarn build --noEmit",
     "format": "prettier --write .",
     "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
+  },
+  "eslintConfig": {
+    "extends": "@config/eslint-config"
   },
   "prettier": "@config/prettier",
   "dependencies": {
@@ -28,6 +32,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@config/eslint-config": "*",
     "@config/prettier": "*",
     "@types/jest": "^26.0.23",
     "@types/uuid": "^8.3.1",

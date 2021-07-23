@@ -12,6 +12,7 @@
     "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
     "watch": "yarn build -w",
+    "lint": "eslint \"src/**\"",
     "test": "jest --watch --roots src",
     "test:ci": "yarn test --watchAll=false --ci",
     "typecheck": "yarn build --noEmit",
@@ -19,7 +20,11 @@
     "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
   },
   "prettier": "@config/prettier",
+  "eslintConfig": {
+    "extends": "@config/eslint-config"
+  },
   "devDependencies": {
+    "@config/eslint-config": "*",
     "@config/prettier": "*",
     "@types/jest": "^26.0.23",
     "jest": "26.6.0",

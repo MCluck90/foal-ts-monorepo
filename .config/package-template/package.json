@@ -11,6 +11,7 @@
     "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
     "watch": "yarn build -w",
+    "lint": "eslint \"src/**\" \"test/**\" \"types/**\"",
     "test": "jest --watch",
     "test:unit": "yarn test --testPathPattern=src",
     "test:integration": "yarn test --testPathPattern=test",
@@ -22,6 +23,7 @@
   "prettier": "@config/prettier",
   "dependencies": {},
   "devDependencies": {
+    "@config/eslint-config": "*",
     "@config/prettier": "*",
     "@types/jest": "^26.0.23",
     "jest": "26.6.0",

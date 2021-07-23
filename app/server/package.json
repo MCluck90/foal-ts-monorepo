@@ -8,6 +8,7 @@
     "clean": "rimraf -rf ./build tsconfig.tsbuildinfo",
     "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
+    "lint": "eslint \"src/**\" \"test/**\" \"types/**\"",
     "test": "jest --watch",
     "test:unit": "yarn test --testPathPattern=src",
     "test:integration": "yarn test --testPathPattern=test",
@@ -19,6 +20,9 @@
     "generate:script": "foal generate script",
     "generate:service": "foal generate service",
     "preinstall": "path-exists ../../scripts/verify-dependency && node ../../scripts/verify-dependency.js || exit 0"
+  },
+  "eslintConfig": {
+    "extends": "@config/eslint-config"
   },
   "prettier": "@config/prettier",
   "_moduleAliases": {
@@ -33,6 +37,7 @@
     "@utility/common": "*"
   },
   "devDependencies": {
+    "@config/eslint-config": "*",
     "@config/prettier": "*",
     "@foal/cli": "^2.5.0",
     "@types/jest": "^26.0.23",

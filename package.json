@@ -9,6 +9,7 @@
   },
   "workspaces": {
     "packages": [
+      ".config/eslint",
       ".config/prettier",
       "access/common",
       "access/task",
@@ -38,13 +39,13 @@
     "*.{ts,tsx,js,jsx,json,css,html}": "prettier --write"
   },
   "prepush-if-changed": {
-    "access/common/**/*": "cd access/common && yarn rebuild && yarn test:ci",
-    "access/task/**/*": "cd access/task && yarn rebuild && yarn test:ci",
-    "app/client/**/*": "cd app/client && yarn rebuild && yarn test:ci",
-    "app/server/**/*": "cd app/server && yarn rebuild && yarn test:ci",
-    "engine/validation/**/*": "cd engine/validation && yarn rebuild && yarn test:ci",
-    "manager/administration/**/*": "cd manager/administration && yarn rebuild && yarn test:ci",
-    "utility/common/**/*": "cd utility/common && yarn rebuild && yarn test:ci"
+    "access/common/**/*": "cd access/common && yarn lint && yarn rebuild && yarn test:ci",
+    "access/task/**/*": "cd access/task && yarn lint && yarn rebuild && yarn test:ci",
+    "app/client/**/*": "cd app/client && yarn lint && yarn rebuild && yarn test:ci",
+    "app/server/**/*": "cd app/server && yarn lint && yarn rebuild && yarn test:ci",
+    "engine/validation/**/*": "cd engine/validation && yarn lint && yarn rebuild && yarn test:ci",
+    "manager/administration/**/*": "cd manager/administration && yarn lint && yarn rebuild && yarn test:ci",
+    "utility/common/**/*": "cd utility/common && yarn lint && yarn rebuild && yarn test:ci"
   },
   "dependencies": {
     "comment-json": "^4.1.0",

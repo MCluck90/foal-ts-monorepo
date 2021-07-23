@@ -14,11 +14,16 @@
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@utility/common/*": ["../../utility/common/src/*"],
       "@config/prettier": ["../../.config/prettier/src"],
-      "@utility/common": ["../../utility/common/src"]
+      "@utility/common": ["../../utility/common/src"],
+      "@config/eslint-config": ["../../.config/eslint/src"],
+      "@config/eslint-config/*": ["../../.config/eslint/src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
   "references": [
+    {
+      "path": "../../.config/eslint"
+    },
     {
       "path": "../../.config/prettier"
     },

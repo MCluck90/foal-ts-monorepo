@@ -280,6 +280,9 @@ export enum HttpStatusCode {
   NetworkAuthenticationRequired = 511,
 }
 
+// Normally, namespaces are dumb. In this case, we're using the namespace to
+// add "static methods" to an enum.
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace HttpStatusCode {
   /**
    * Is the response information?
@@ -324,7 +327,9 @@ export namespace HttpStatusCode {
  * toQueryParameters({ a: 1, b: 'two' }) === 'a=1&b=two'
  * ```
  */
-export const toQueryParameters = (obj: Record<string | number, unknown>) =>
+export const toQueryParameters = (
+  obj: Record<string | number, unknown>,
+): string =>
   Object.keys(obj).reduce((query, key) => {
     const val = obj[key]
     if (val === null || val === undefined) {

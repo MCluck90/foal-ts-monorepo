@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { createStyles } from '~/common/styles'
 import { Theme } from '~/theme'
@@ -20,7 +21,7 @@ const useStyles = createStyles({
   activeLink: {},
 })
 
-export const Navigation = () => {
+export const Navigation: React.FC = () => {
   const styles = useStyles()
   return (
     <nav className={styles.root}>

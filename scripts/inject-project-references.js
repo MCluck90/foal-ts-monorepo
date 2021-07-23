@@ -57,7 +57,7 @@ for (const pkg of Object.values(packages)) {
   const references = []
   const referencePathAliases = []
   for (const packageName of Object.keys(packages)) {
-    if (pkg.dependencies[packageName]) {
+    if (pkg.dependencies[packageName] && !packageName.startsWith('@config')) {
       const referencePath = toUnixPath(
         path.relative(pkg.path, packages[packageName].path),
       )
@@ -85,7 +85,7 @@ for (const pkg of Object.values(packages)) {
     }
     for (const { name, referencePath } of referencePathAliases) {
       paths.config.compilerOptions.paths[`${name}`] = [`${referencePath}/src`]
-      if (name !== '@config/prettier') {
+      if (!name.startsWith('@config')) {
         paths.config.compilerOptions.paths[`${name}/*`] = [
           `${referencePath}/src/*`,
         ]

@@ -1,4 +1,4 @@
-import { Connection, createConnection } from '@access/common'
+import { Connection } from '@access/common'
 import { TaskAccess } from '..'
 
 describe('TaskAccess', () => {

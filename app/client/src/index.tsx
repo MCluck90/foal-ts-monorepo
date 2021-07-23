@@ -18,6 +18,7 @@ const store = createStore()
 
 interface LazyRouteProps extends RouteProps {
   fallback?: React.ReactNode
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Component: React.LazyExoticComponent<any>
 }
 

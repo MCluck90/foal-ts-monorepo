@@ -18,7 +18,7 @@ const useStyles = createStyles({
   },
 })
 
-export const ThemeComponent: React.FC<{}> = () => {
+export const ThemeComponent: React.FC = () => {
   const styles = mergeClasses(useRouteStyles(), useStyles())
   return (
     <div className={styles.root}>

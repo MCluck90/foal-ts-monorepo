@@ -1,5 +1,5 @@
 export class ApiService {
-  sayHello() {
+  sayHello(): string {
     return 'Hello world!'
   }
 }

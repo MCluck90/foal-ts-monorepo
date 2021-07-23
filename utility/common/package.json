@@ -13,6 +13,7 @@
     "rebuild": "yarn run clean && yarn run build",
     "watch": "yarn build -w",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint:fix": "yarn lint --fix",
     "test": "jest --watch --roots src",
     "test:ci": "yarn test --watchAll=false --ci",
     "typecheck": "yarn build --noEmit",

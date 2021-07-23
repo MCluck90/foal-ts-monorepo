@@ -10,4 +10,4 @@ export interface ITaskValidationEngine {
   canStoreTask(task: TaskDto): Promise<Result<void, TaskValidationErrorDto>>
 }
 
-export interface IValidationEngine extends ITaskValidationEngine {}
+export type IValidationEngine = ITaskValidationEngine

@@ -8,7 +8,7 @@ import { isNotNull } from './type-guards'
  * Get the first item in an array.
  * Returns null if the array is non-existent or empty.
  */
-export const firstOrNull = <T>(items: Nullish<T[]>) =>
+export const firstOrNull = <T>(items: Nullish<T[]>): T | null =>
   items && items.length > 0 ? items[0] : null
 
 /**
@@ -18,7 +18,7 @@ export const firstOrNull = <T>(items: Nullish<T[]>) =>
 export const firstOrDefault = <T, U>(
   items: Nullish<T[]>,
   defaultValue: Lazy<U>,
-) => (items && items.length > 0 ? items[0] : defaultValue())
+): T | U => (items && items.length > 0 ? items[0] : defaultValue())
 
 /**
  * Determine if an array is non-empty.

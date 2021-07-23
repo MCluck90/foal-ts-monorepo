@@ -16,14 +16,14 @@ export class Result<T = never, E = never> implements IterableIterator<T> {
    */
   static Ok<T extends void>(): Result<T, never>
   static Ok<T>(value: T): Result<T, never>
-  static Ok<T>(value?: T) {
+  static Ok<T>(value?: T): Result<T, never> {
     return new Result<T, never>(true, value as T, null as never)
   }
 
   /**
    * Contains the err value.
    */
-  static Err<T>(err: T) {
+  static Err<T>(err: T): Result<never, T> {
     return new Result<never, T>(false, null as never, err)
   }
 
@@ -41,7 +41,7 @@ export class Result<T = never, E = never> implements IterableIterator<T> {
     return !this._isOk
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator](): this {
     return this
   }
 

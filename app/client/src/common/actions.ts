@@ -64,6 +64,7 @@ export function createAction<Payload, Meta, Args extends AnyArray>(
   payloadCreator: ActionFunction<Args, Payload>,
   metaCreator: ActionFunction<Args, Meta>,
 ): ActionFunction<Args, ActionMeta<Payload, Meta>>
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function createAction(
   type: string,
   payloadCreator: (...p: any[]) => any | null | undefined = identity,

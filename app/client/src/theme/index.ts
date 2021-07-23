@@ -88,7 +88,7 @@ export const getThemeValue = (themeKey: Theme): string =>
 /**
  * Set the value for a part of the theme
  */
-export const setThemeValue = (themeKey: Theme, value: string) => {
+export const setThemeValue = (themeKey: Theme, value: string): void => {
   document.body.style.setProperty(keyToPropertyName(themeKey), value)
 
   const theme = getThemeFromStorage()
@@ -103,7 +103,7 @@ export const setThemeValue = (themeKey: Theme, value: string) => {
 /**
  * Reset theme value to default value
  */
-export const resetThemeValue = (themeKey: Theme) => {
+export const resetThemeValue = (themeKey: Theme): string => {
   const value = defaultValuesRecord[themeKey]
   setThemeValue(themeKey, value)
   return value
@@ -166,7 +166,7 @@ export const themeKeyToName = (theme: Theme): string | null => {
 /**
  * Load and apply theme theme
  */
-export const initializeTheme = () => {
+export const initializeTheme = (): void => {
   const customProperties = Array.from(defaultValues.entries()).map(
     ([reference, defaultValue]) =>
       `${keyToPropertyName(reference)}: ${defaultValue}`,

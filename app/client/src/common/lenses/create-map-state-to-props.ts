@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Gettable } from '@optiqs/projections'
 import { mapValues } from '@utility/common/object'
 import { State } from '~/types'

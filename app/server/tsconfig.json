@@ -21,21 +21,11 @@
       "@engine/validation": ["../../engine/validation/src"],
       "@engine/validation/*": ["../../engine/validation/src/*"],
       "@utility/common": ["../../utility/common/src"],
-      "@utility/common/*": ["../../utility/common/src/*"],
-      "@config/eslint-config": ["../../.config/eslint/src"],
-      "@config/eslint-config/*": ["../../.config/eslint/src/*"],
-      "@config/eslint-config-server": ["../../.config/eslint/server/src"],
-      "@config/eslint-config-server/*": ["../../.config/eslint/server/src/*"]
+      "@utility/common/*": ["../../utility/common/src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
   "references": [
-    {
-      "path": "../../.config/eslint/server"
-    },
-    {
-      "path": "../../.config/prettier"
-    },
     {
       "path": "../../access/common"
     },

@@ -1,13 +1,15 @@
 import { createUseStyles, Styles } from 'react-jss'
 
-type MergedClasses<T extends any[]> = {
+type MergedClasses<T extends unknown[]> = {
   [Index in keyof T]: Extract<keyof Exclude<T[Index], undefined>, string>
 }[number]
 
 /**
  * Merge objects containing CSS classes, such as what comes from `react-jss`.
  */
-export function mergeClasses<T extends any[]>(...objects: T) {
+export function mergeClasses<
+  T extends Record<string | number | symbol, unknown>[],
+>(...objects: T): Record<MergedClasses<T>, string> {
   const allKeys = objects.reduce<string[]>((keys, obj = {}) => {
     const objKeys = Object.keys(obj || {})
     return [...keys, ...objKeys]

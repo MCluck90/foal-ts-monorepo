@@ -9,6 +9,7 @@
     "build": "tsc --build",
     "rebuild": "yarn run clean && yarn run build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src test types",
+    "lint:fix": "yarn lint --fix",
     "test": "jest --watch",
     "test:unit": "yarn test --testPathPattern=src",
     "test:integration": "yarn test --testPathPattern=test",

@@ -2,7 +2,7 @@
 import * as http from 'http'
 
 // 3p
-import { Config, createApp, displayServerURL, ServiceManager } from '@foal/core'
+import { Config, createApp, displayServerURL } from '@foal/core'
 
 // App
 import { AppController } from './app/app.controller'

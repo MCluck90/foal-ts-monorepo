@@ -2,7 +2,7 @@ import { TaskDto } from '@utility/common/dtos'
 import { ValidationEngine } from '..'
 
 describe('ValidationEngine', () => {
-  let validationEngine = new ValidationEngine()
+  const validationEngine = new ValidationEngine()
 
   describe('canStoreTask', () => {
     test('should return Ok when given a valid task', async () => {

@@ -42,4 +42,4 @@ export interface ITaskManager {
   ): Promise<Result<void, RemoveTaskErrorDto>>
 }
 
-export interface IAdministrationManager extends ITaskManager {}
+export type IAdministrationManager = ITaskManager

@@ -8,18 +8,11 @@
     "paths": {
       "~/*": ["./src/*"],
       "@config/prettier/*": ["../../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"],
-      "@config/eslint-config": ["../../.config/eslint/src"],
-      "@config/eslint-config/*": ["../../.config/eslint/src/*"],
-      "@config/eslint-config-server": ["../../.config/eslint/server/src"],
-      "@config/eslint-config-server/*": ["../../.config/eslint/server/src/*"]
+      "@config/prettier": ["../../.config/prettier/src"]
     }
   },
   "include": ["src/**/*"],
   "references": [
-    {
-      "path": "../../.config/eslint/server"
-    },
     {
       "path": "../../.config/prettier"
     }

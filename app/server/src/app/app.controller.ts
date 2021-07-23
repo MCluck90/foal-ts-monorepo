@@ -11,8 +11,6 @@ import { TasksController } from './controllers'
 export class AppController implements IAppController {
   subControllers = [controller('/tasks', TasksController)]
 
-  async init() {}
-
   handleError?(
     error: Error,
     ctx: Context,

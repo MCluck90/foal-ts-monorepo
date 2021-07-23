@@ -1,11 +1,6 @@
-import { ok, strictEqual } from 'assert'
 import {
   Context,
   createController,
-  getHttpMethod,
-  getPath,
-  isHttpResponseCreated,
-  isHttpResponseNoContent,
   isHttpResponseOK,
   ServiceManager,
 } from '@foal/core'
@@ -57,10 +52,9 @@ describe('TasksController', () => {
         await taskAccess.store(task)
       }
 
-      const ctx = new Context({})
-      const response = await controller.getTasks(ctx)
+      const response = await controller.getTasks()
       expect(isHttpResponseOK(response)).toBe(true)
-      expect(response.body).toEqual(tasks)
+      expect(response.body).toEqual({ tasks: tasks })
     })
   })
 })

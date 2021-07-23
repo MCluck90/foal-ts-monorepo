@@ -11,6 +11,8 @@ import { initialState } from './initial-state'
 import { State } from '~/types'
 import { routeSagas } from '~/routes/effects'
 
+// The type for this is very noisy so we've chosen to avoid writing it out.
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const configureStore = <S>(
   reducer: Reducer<S>,
   sagas: () => Generator<SagaGenerator<unknown>>,
@@ -49,5 +51,6 @@ function* rootSaga() {
 
 export const reducer = createReducer(initialState) as Reducer<State>
 
-export const createStore = (state = initialState) =>
-  configureStore(reducer, rootSaga, state)
+export const createStore = (
+  state = initialState,
+): ReturnType<typeof configureStore> => configureStore(reducer, rootSaga, state)

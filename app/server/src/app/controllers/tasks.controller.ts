@@ -30,7 +30,7 @@ export class TasksController {
   administrationManager: AdministrationManager
 
   @Get('/')
-  async getTasks(ctx: Context) {
+  async getTasks(): Promise<HttpResponse> {
     const tasks = await this.administrationManager.findTasks()
     const response: TasksApiGetResponse = { tasks }
     return new HttpResponseOK(response)
@@ -45,7 +45,7 @@ export class TasksController {
     required: ['text'],
     type: 'object',
   })
-  async storeTask(ctx: Context) {
+  async storeTask(ctx: Context): Promise<HttpResponse> {
     const body: PostBody = ctx.request.body
     const result = await this.administrationManager.addTask(body)
     return result.match<HttpResponse>({
@@ -69,7 +69,7 @@ export class TasksController {
     required: ['id'],
     type: 'object',
   })
-  async updateTask(ctx: Context) {
+  async updateTask(ctx: Context): Promise<HttpResponse> {
     const body: PutBody = ctx.request.body
     const result = await this.administrationManager.updateTask(body)
     return result.match<HttpResponse>({
@@ -91,7 +91,7 @@ export class TasksController {
     required: ['id'],
     type: 'object',
   })
-  async deleteTask(ctx: Context) {
+  async deleteTask(ctx: Context): Promise<HttpResponse> {
     const body: PutBody = ctx.request.body
     const result = await this.administrationManager.removeTask(body)
     return result.match<HttpResponse>({

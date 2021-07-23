@@ -6,7 +6,7 @@ import { AdministrationManager } from '@manager/administration'
 
 export const setupServiceManager = async (
   connectionType: ConnectionType = 'default',
-) => {
+): Promise<ServiceManager> => {
   const serviceManager = new ServiceManager()
   const register = <TInstance>(
     tClass: ClassOrAbstractClass,

@@ -8,7 +8,7 @@ export interface ColorPickerProps {
   onChange?: (color: string) => unknown
 }
 
-const toFullRGB = (color: string = '#000') =>
+const toFullRGB = (color = '#000') =>
   color.length === 4
     ? `#${color[1].repeat(2)}${color[2].repeat(2)}${color[3].repeat(2)}`
     : color

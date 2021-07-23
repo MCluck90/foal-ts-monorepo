@@ -1,6 +1,6 @@
-import { defaultStyleSheet } from '../src/theme'
+import { initializeTheme } from '../src/theme'
 
-document.head.appendChild(defaultStyleSheet)
+initializeTheme()
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

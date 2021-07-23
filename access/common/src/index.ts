@@ -1,6 +1,12 @@
 import path from 'path'
 import 'reflect-metadata'
+import dotenv from 'dotenv'
 export * from 'typeorm'
+
+dotenv.config({ path: path.join(__dirname, '../../../.env') })
+
+const port =
+  (process.env.POSTGRES_PORT && Number(process.env.POSTGRES_PORT)) || 5432
 
 import {
   Connection,
@@ -23,6 +29,7 @@ export const createConnection = async (
     type: 'postgres',
     password: 'postgres',
     database: undefined,
+    port,
     entities: [__dirname + '/entity/**/*.{js,ts}'],
     migrations: [__dirname + '/migration/**/*.{js,ts}'],
     subscribers: [__dirname + '/subscriber/**/*.{js,ts}'],
@@ -43,6 +50,7 @@ export const createConnection = async (
     type: 'postgres',
     password: 'postgres',
     database: databaseName,
+    port,
     entities: [__dirname + '/entity/**/*.{js,ts}'],
     migrations: [__dirname + '/migration/**/*.{js,ts}'],
     subscribers: [__dirname + '/subscriber/**/*.{js,ts}'],

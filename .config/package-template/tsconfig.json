@@ -9,15 +9,9 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "~/*": ["./src/*"],
-      "@config/prettier/*": ["../../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["types/*", "src/**/*"],
-  "references": [
-    {
-      "path": "../../.config/prettier"
-    }
-  ]
+  "references": []
 }

@@ -9,10 +9,8 @@
     "strictPropertyInitialization": false,
     "paths": {
       "~/*": ["./src/*"],
-      "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@access/common": ["../common/src"],
       "@access/common/*": ["../common/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"],
       "@utility/common": ["../../utility/common/src"],
       "@utility/common/*": ["../../utility/common/src/*"]
     }

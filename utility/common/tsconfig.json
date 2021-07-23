@@ -6,15 +6,9 @@
     "baseUrl": ".",
     "composite": true,
     "paths": {
-      "~/*": ["./src/*"],
-      "@config/prettier/*": ["../../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"]
+      "~/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],
-  "references": [
-    {
-      "path": "../../.config/prettier"
-    }
-  ]
+  "references": []
 }

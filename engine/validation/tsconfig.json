@@ -10,8 +10,6 @@
     "strictPropertyInitialization": false,
     "paths": {
       "~/*": ["./src/*"],
-      "@config/prettier/*": ["../../.config/prettier/src/*"],
-      "@config/prettier": ["../../.config/prettier/src"],
       "@access/task": ["../../access/task/src"],
       "@access/task/*": ["../../access/task/src/*"],
       "@utility/common": ["../../utility/common/src"],

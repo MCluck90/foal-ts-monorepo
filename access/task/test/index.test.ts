@@ -7,7 +7,7 @@ describe('TaskAccess', () => {
   let connection: Connection
 
   beforeEach(async () => {
-    connection = await createConnection('integration')
+    connection = await createConnection('access_task_integration')
     todoAccess = new TaskAccess(connection)
   })
 

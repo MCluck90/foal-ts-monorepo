@@ -6,7 +6,7 @@ describe('Todo', () => {
   let connection: Connection
 
   beforeAll(async () => {
-    connection = await createConnection('integration')
+    connection = await createConnection('access_common_integration')
   })
 
   afterEach(async () => {

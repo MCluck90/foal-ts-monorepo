@@ -32,8 +32,8 @@
   "prettier": "@config/prettier",
   "dependencies": {
     "@utility/common": "*",
-    "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.0.2"
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@config/eslint-config-server": "*",

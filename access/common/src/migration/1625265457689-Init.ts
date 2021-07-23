@@ -6,11 +6,15 @@ export class Init1625265457689 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(stripIndentation`
-      CREATE TABLE "todo" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar NOT NULL, "done" boolean NOT NULL)
+      create table todo (
+        id   text primary key,
+        text text not null,
+        done bool not null
+      )
     `)
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "todo"`)
+    await queryRunner.query(`drop table todo`)
   }
 }

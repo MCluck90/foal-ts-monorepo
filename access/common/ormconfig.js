@@ -1,6 +1,8 @@
 const defaultConfig = {
-  type: 'sqlite',
+  type: 'postgres',
   synchronize: false,
+  username: 'postgres',
+  password: 'postgres',
   entities: ['src/entity/*.{js,ts}'],
   migrations: ['src/migration/*.{js,ts}'],
   subscribers: ['src/subscriber/*.{js,ts}'],
@@ -15,14 +17,14 @@ module.exports = [
   {
     ...defaultConfig,
     name: 'default',
-    database: 'dev.db',
+    database: 'main',
     logging: false,
   },
   {
     ...defaultConfig,
     name: 'integration',
     dropSchema: true,
-    database: 'integration.db',
+    database: 'integration',
     loggerLevel: 'debug',
   },
 ]

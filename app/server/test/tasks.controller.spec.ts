@@ -1,9 +1,4 @@
-import {
-  Context,
-  createController,
-  isHttpResponseOK,
-  ServiceManager,
-} from '@foal/core'
+import { createController, isHttpResponseOK, ServiceManager } from '@foal/core'
 import { TasksController } from '~/app/controllers/tasks.controller'
 import { AdministrationManager } from '@manager/administration'
 import { setupServiceManager } from '~/setup'
@@ -16,7 +11,7 @@ describe('TasksController', () => {
   let serviceManager: ServiceManager
 
   beforeEach(async () => {
-    serviceManager = await setupServiceManager('integration')
+    serviceManager = await setupServiceManager('app_server_integration')
     controller = createController(TasksController, {
       administrationManager: serviceManager.get(AdministrationManager),
     })

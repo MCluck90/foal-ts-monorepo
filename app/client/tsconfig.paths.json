@@ -8,7 +8,9 @@
       "@config/prettier": ["../../.config/prettier/src"],
       "@utility/common": ["../../utility/common/src"],
       "@config/eslint-config": ["../../.config/eslint/src"],
-      "@config/eslint-config/*": ["../../.config/eslint/src/*"]
+      "@config/eslint-config/*": ["../../.config/eslint/src/*"],
+      "@config/eslint-config-common": ["../../.config/eslint/common/src"],
+      "@config/eslint-config-common/*": ["../../.config/eslint/common/src/*"]
     }
   }
 }

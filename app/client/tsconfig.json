@@ -24,7 +24,7 @@
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../../.config/eslint"
+      "path": "../../.config/eslint/common"
     },
     {
       "path": "../../.config/prettier"

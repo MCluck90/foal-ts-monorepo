@@ -9,7 +9,8 @@
   },
   "workspaces": {
     "packages": [
-      ".config/eslint",
+      ".config/eslint/common",
+      ".config/eslint/server",
       ".config/prettier",
       "access/common",
       "access/task",

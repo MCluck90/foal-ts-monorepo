@@ -10,13 +10,15 @@
       "@config/prettier/*": ["../../.config/prettier/src/*"],
       "@config/prettier": ["../../.config/prettier/src"],
       "@config/eslint-config": ["../../.config/eslint/src"],
-      "@config/eslint-config/*": ["../../.config/eslint/src/*"]
+      "@config/eslint-config/*": ["../../.config/eslint/src/*"],
+      "@config/eslint-config-server": ["../../.config/eslint/server/src"],
+      "@config/eslint-config-server/*": ["../../.config/eslint/server/src/*"]
     }
   },
   "include": ["src/**/*"],
   "references": [
     {
-      "path": "../../.config/eslint"
+      "path": "../../.config/eslint/server"
     },
     {
       "path": "../../.config/prettier"

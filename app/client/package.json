@@ -9,7 +9,7 @@
     "clean": "rimraf ./build",
     "build": "craco build",
     "rebuild": "yarn clean && yarn build",
-    "lint": "eslint \"src/**\"",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "test": "craco test",
     "test:ci": "craco test --watchAll=false --ci --passWithNoTests && prettier --write tsconfig.json",
     "format": "prettier --write .",
@@ -22,7 +22,7 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "@config/eslint-config"
+      "@config/eslint-config-common"
     ],
     "overrides": [
       {
@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@config/eslint-config": "*",
+    "@config/eslint-config-common": "*",
     "@config/prettier": "*",
     "@craco/craco": "^6.1.2",
     "@storybook/addon-actions": "^6.3.4",

@@ -14,7 +14,7 @@ We will utilize [ADRs (or architecture decision records)](https://www.cognitect.
 
 We will use these records for documenting [any big changes, common problems, or stylistic choices](https://engineering.atspotify.com/2020/04/14/when-should-i-write-an-architecture-decision-record/).
 
-These documents will live in `/documentation/decisions` and will be numbered sequentially. The format for these decisions is given in [`template.md`](template.md)
+These documents will live in `/.adrs` and will be numbered sequentially. The format for these decisions is given in [`template.md`](template.md)
 
 ## Consequences
 

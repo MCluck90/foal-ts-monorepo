@@ -30,6 +30,22 @@ yarn install
 5. This will launch the server and the client. The debugger automatically pauses when the server starts. Click the 
   `Continue` button to continue launching the app.
 
+## Technologies
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Foal](https://foalts.org/)
+- [TypeORM](https://typeorm.io/)
+- [Create React App](https://create-react-app.dev/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Redux](https://redux.js.org/)
+- [Redux Saga](https://redux-saga.js.org/)
+- [Jest](https://jestjs.io/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Yarn](https://yarnpkg.com/)
+- [Husky](https://typicode.github.io/husky/)
+
 ## Philosophy
 
 The first thing you'll notice is that this project is built as a monorepo. By managing all of the pieces of the system

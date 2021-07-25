@@ -81,6 +81,10 @@ The different packages are separated using ideas outlined in [_Righting Software
 
 For more information about each of the decisions made for this project, go check out the [ADRs](./.adrs) folder.
 
+## Workspaces
+
+To make it easier to work on a particular part of the application at a time, custom workspaces have been assembled. Open the workspace that makes the most sense for you or just load the entire project in to VS Code at once if you'd prefer.
+
 ## Creating New Packages
 
 To make it easier to create your own packages for each layer, there is a `new` script. The script takes in a package type (as defined by layer) and a name. It will take care of putting together the necessary boilerplate for you.

@@ -1,3 +1,12 @@
+/**
+ * Create a new package.
+ *
+ * ```sh
+ * $ yarn new access task
+ * $ yarn new engine validation
+ * $ yarn new manager administration
+ * ```
+ */
 const { execSync } = require('child_process')
 const fs = require('fs-extra')
 const path = require('path')

@@ -49,55 +49,37 @@ yarn install
 
 The first thing you'll notice is that this project is built as a monorepo. By managing all of the pieces of the system in a single place, this aids in velocity as the entire system can be modified at the same time. 
 
-The different packages are separated using ideas outlined in [_Righting Software_](https://rightingsoftware.org/). This document will go in to a high-level explanation of each of the layers.
+The different packages are separated using ideas outlined in [_Righting Software_](https://rightingsoftware.org/). This document will go in to a high-level explanation of each of the layers. See [_Use Volatility-Based Decomposition_](./.adrs/00005-use-volatility-based-decomposition.md) for a more in-depth explanation.
 
 ```
-Utility
-  ⬇️
-Access
-  ⬇️
-Engine
-  ⬇️
-Manager
-  ⬇️
- App
+┌────────┐            ┌─────────┐
+│        │            │         │
+│ Client ├────────────►         │
+│        │            │         │
+└────┬───┘            │         │
+     │                │         │
+┌────▼────┐           │         │
+│         │           │         │
+│ Manager │           │         │
+│         ├───────────►         │
+└──┬─────┬┘           │         │
+   │     │            │         │
+   │     │            │         │
+   │  ┌──▼─────┐      │         │
+   │  │        │      │ Utility │
+   │  │ Engine ├──────►         │
+   │  │        │      │         │
+   │  └─────┬──┘      │         │
+   │        │         │         │
+   │        │         │         │
+┌──▼─────┐  │         │         │
+│        ◄──┘         │         │
+│ Access │            │         │
+│        ├────────────►         │
+└────────┘            └─────────┘
 ```
 
-Packages in a given layer can use packages in a layer below them but never above them. The only time a project can reach "across" in a layer is when using a "common". "Common" packages can be thought of as a base package for a given layer.  They should provide functionality that is useful across the layer.
-
-### Utility
-
-Utility projects provide tools that are helpful across multiple layers. Think of things like logging, type helpers, etc. Utility folders are notorious for becoming dumping grounds for everything. Here, utility projects should be thought of as extensions of the standard library. If some functionality is useful across layers, it is likely a utility project.
-
-### Access
-
-The access layer deals with accessing data sources. This is where everything to do with the database is handled.  They should act as a layer of abstraction over the database rather than a 1:1 translation. For example, the `@access/task` package actually uses a `todo` table internally but a `todo` is only one version of a potential "task".  Therefore, `@access/task` exposes it's data as "tasks" rather than the low-level "todo".
-
-Access layer packages are only all allowed to reference Utility packages.
-
-### Engine
-
-Engines are responsible for things like validation and transformation. One way to think of them is as logic units. They should create and validate data in a way that makes the work in a Manager simpler.
-
-Engine layer packages are allowed to reference Utility and Access packages.
-
-### Manager
-
-Managers are responsible for business logic. They should be capable of taking in minimal data and executing an entire use case. The goal is to make them read in nearly simple language.
-
-Manager layer packages are allowed to reference Utility, Access, and Engine packages.
-
-### App
-
-The App layer is really any sort of end-user level application. In this case, we have a server and client.
-
-#### Server
-
-The server acts as the orchestrator of interactions. It's allowed to call in to Managers and relays those calls to the web client.
-
-#### Client
-
-The client is a graphical front-end for the server. The intended design is to use a [backend for frontend](https://samnewman.io/patterns/architectural/bff/) pattern. All of the logic lives on the server and the client acts as a dumb terminal for that logic.
+For more information about each of the decisions made for this project, go check out the [ADRs](./.adrs) folder.
 
 ## Creating New Packages
 

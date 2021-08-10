@@ -21,13 +21,18 @@ Boilerplate for an application with a selection of technologies.
 yarn install
 ```
 
-2. Start the database.
+2. Copy `.env.example` and modify any values as necessary
+   ```sh
+   cp .env.example .env
+   ```
+
+3. Start the database.
    ```sh
    docker compose up -d
    ```
-3. Open `app.code-workspace` with VS Code.
-4. Press `F5` or go to the `Run and Debug` section and launch `Debug (workspace)`.
-5. This will launch the server and the client. The debugger automatically pauses when the server starts. Click the `Continue` button to continue launching the app.
+4. Open `app.code-workspace` with VS Code.
+5. Press `F5` or go to the `Run and Debug` section and launch `Debug (workspace)`.
+6. This will launch the server and the client. The debugger automatically pauses when the server starts. Click the `Continue` button to continue launching the app.
 
 ## Technologies
 

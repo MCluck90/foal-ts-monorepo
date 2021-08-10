@@ -23,7 +23,7 @@
           "order": 1
         },
         "name": "Debug",
-        "configurations": ["Debug Server", "Debug Client"]
+        "configurations": ["Watch @utility/common", "Debug Server", "Debug Client"]
       }
     ]
   }

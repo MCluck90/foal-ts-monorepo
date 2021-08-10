@@ -25,10 +25,12 @@
       "**/@types/jest",
       "**/@types/mocha",
       "**/@types/testing-library__jest-dom",
+      "**/babel-loader",
       "**/jest",
       "**/module-alias",
       "**/typeorm",
-      "**/typeorm/**"
+      "**/typeorm/**",
+      "**/webpack"
     ]
   },
   "devDependencies": {
